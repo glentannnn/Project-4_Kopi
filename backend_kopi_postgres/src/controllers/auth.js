@@ -11,7 +11,7 @@ const getAllUsers = async (req, res) => {
     );
     res.json(userList.rows);
   } catch (error) {
-    console.log(error.mesage);
+    console.log(error.message);
     res.status(400).json({ status: "error", msg: "error getting users" });
   }
 };

@@ -23,25 +23,25 @@ INSERT INTO roles (role) VALUES ('user');
 
 -- Create "beans" table
 CREATE TABLE beans (
-    beans_id SERIAL PRIMARY KEY,
-    beans_country VARCHAR(100) NOT NULL,
+    bean_id SERIAL PRIMARY KEY,
+    bean_country VARCHAR(100) NOT NULL,
     -- FOREIGN KEY (beans_country) REFERENCES countries(code)
-    beans_region VARCHAR(200) NOT NULL,
-    beans_type VARCHAR(200) NOT NULL,
-    FOREIGN KEY (beans_type) REFERENCES beansType(beans_type),
-    beans_taste VARCHAR(200) NOT NULL,
-    beans_roastdate DATE NOT NULL,
-    beans_prevgrindsize DECIMAL NOT NULL,
-    beans_remarks VARCHAR(200) NOT NULL
+    bean_region VARCHAR(200) NOT NULL,
+    bean_type VARCHAR(200) NOT NULL,
+    FOREIGN KEY (bean_type) REFERENCES beansType(bean_type),
+    bean_taste VARCHAR(200) NOT NULL,
+    bean_roastdate DATE NOT NULL,
+    bean_prevgrindsize DECIMAL NOT NULL,
+    bean_remarks VARCHAR(200) NOT NULL
 );
 
 CREATE TABLE beansType (
-    beans_type VARCHAR(200) PRIMARY KEY
+    bean_type VARCHAR(200) PRIMARY KEY
 );
 
 
-INSERT INTO beansType (beans_type) VALUES ('espresso');
-INSERT INTO beansType (beans_type) VALUES ('filter');
+INSERT INTO beansType (bean_type) VALUES ('espresso');
+INSERT INTO beansType (bean_type) VALUES ('filter');
 
 -- CREATE TABLE countries (
 --     code VARCHAR(2) PRIMARY KEY,
@@ -53,7 +53,7 @@ CREATE TABLE equipment (
     equipment_type VARCHAR(200) NOT NULL,
     FOREIGN KEY (equipment_type) REFERENCES equipmentType(equipment_type),
     equipment_model VARCHAR(200) NOT NULL,
-    equipment_modification VARCHAR(200) NOT NULL
+    equipment_modification VARCHAR(200) 
 );
 
 CREATE TABLE equipmentType (
