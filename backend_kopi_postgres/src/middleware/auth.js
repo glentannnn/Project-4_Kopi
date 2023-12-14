@@ -32,7 +32,7 @@ const authAdmin = (req, res, next) => {
       // Search for the access token if we want to log out. If can find, means user havent logged out.
 
       // Below code is the one difference for the role authentication
-      if (decoded.role === "admin") {
+      if (decoded.role === "ADMIN") {
         req.decoded = decoded;
         next();
       } else {

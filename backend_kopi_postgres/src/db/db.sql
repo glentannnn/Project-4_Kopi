@@ -18,8 +18,8 @@ CREATE TABLE roles (
 );
 
 -- Insert values into "roles" table.
-INSERT INTO roles (role) VALUES ('admin');
-INSERT INTO roles (role) VALUES ('user');
+INSERT INTO roles (role) VALUES ('ADMIN');
+INSERT INTO roles (role) VALUES ('USER');
 
 -- Create "beans" table
 CREATE TABLE beans (
@@ -31,23 +31,25 @@ CREATE TABLE beans (
     FOREIGN KEY (bean_type) REFERENCES beansType(bean_type),
     bean_taste VARCHAR(200) NOT NULL,
     bean_roastdate DATE NOT NULL,
-    bean_prevgrindsize DECIMAL NOT NULL,
+    bean_prevgrindsize DECIMAL NOT NULL CHECK(bean_prevgrindsize >= 0 and bean_prevgrindsize <= 10),
     bean_remarks VARCHAR(200) NOT NULL
 );
 
+-- Create "beansType" constraint table
 CREATE TABLE beansType (
     bean_type VARCHAR(200) PRIMARY KEY
 );
 
-
-INSERT INTO beansType (bean_type) VALUES ('espresso');
-INSERT INTO beansType (bean_type) VALUES ('filter');
+-- Insert default values into "beansType" constraint table
+INSERT INTO beansType (bean_type) VALUES ('ESPRESSO');
+INSERT INTO beansType (bean_type) VALUES ('FILTER');
 
 -- CREATE TABLE countries (
 --     code VARCHAR(2) PRIMARY KEY,
 --     name VARCHAR(100) NOT NULL UNIQUE
 -- )
 
+-- Create "equipment" table
 CREATE TABLE equipment (
     equipment_id SERIAL PRIMARY KEY,
     equipment_type VARCHAR(200) NOT NULL,
@@ -56,10 +58,25 @@ CREATE TABLE equipment (
     equipment_modification VARCHAR(200) 
 );
 
+-- Create "equipmentType" constraint table
 CREATE TABLE equipmentType (
     equipment_type VARCHAR(200) PRIMARY KEY
 );
 
-INSERT INTO equipmentType (equipment_type) VALUES ('grinder');
-INSERT INTO equipmentType (equipment_type) VALUES ('espresso machine');
-INSERT INTO equipmentType (equipment_type) VALUES ('v60');
+-- Insert default values into "equipmentType" constraint table. All capital and no space for PRI KEY
+INSERT INTO equipmentType (equipment_type) VALUES ('GRINDER');
+INSERT INTO equipmentType (equipment_type) VALUES ('ESPRESSOMACHINE');
+INSERT INTO equipmentType (equipment_type) VALUES ('V60');
+
+-- Create "users equipment" table
+
+
+-- composite primary keys. USE this for creating the surrogate tables. Below is an example.
+-- CREATE TABLE equipment (
+--     equipment_id SERIAL ,
+--     FOREIGN KEY (equipment_type) REFERENCES equipmentType(equipment_type),
+--     equipment_type VARCHAR(200) NOT NULL,
+--     FOREIGN KEY (equipment_type) REFERENCES equipmentType(equipment_type),
+--     equipment_model VARCHAR(200) NOT NULL,
+--     equipment_modification VARCHAR(200) 
+-- ) PRIMARY KEY (col_1,col_2); 
