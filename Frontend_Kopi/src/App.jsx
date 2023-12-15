@@ -10,6 +10,7 @@ import Profile from "./components/Profile";
 import UserContext from "./context/user";
 
 function App() {
+  const [showLogin, setShowLogin] = useState(true);
   const [accessToken, setAccessToken] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -31,9 +32,21 @@ function App() {
       >
         <Router>
           <Routes>
-            <Route path="/login" element={<Login />} />
-            <Route path="/registration" element={<Registration />} />
-            <Route path="/profile" element={<Profile />} />
+            <Route
+              path="/"
+              element={
+                accessToken.length === 0 &&
+                showLogin && <Login setShowLogin={setShowLogin} />
+              }
+            />
+            <Route
+              path="/registration"
+              element={
+                accessToken.length === 0 &&
+                !showLogin && <Registration setShowLogin={setShowLogin} />
+              }
+            />
+            <Route path="/profile" element={accessToken > 0 && <Profile />} />
           </Routes>
         </Router>
       </UserContext.Provider>
