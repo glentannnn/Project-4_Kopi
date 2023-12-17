@@ -1,10 +1,14 @@
 import React, { useContext, useEffect, useState } from "react";
 import UserContext from "../context/user";
 import Equipment from "./Equipment";
+import styles from "./Equipment.module.css";
 
 const Profile = () => {
   const [name, setName] = useState("");
   const [equipment, setEquipment] = useState([]);
+  const [type, setType] = useState("");
+  const [model, setModel] = useState("");
+  const [modification, setModification] = useState("");
   const userCtx = useContext(UserContext);
   console.log(equipment);
 
@@ -55,7 +59,52 @@ const Profile = () => {
         },
         body: JSON.stringify({ type, model, modification }),
       });
-      const data = await res.json();
+
+      // const data = await res.json();
+      getEquipment();
+      // setType("");
+      // setModel("");
+      // setModification("");
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
+  const deleteEquipment = async (id) => {
+    try {
+      const res = await fetch(
+        import.meta.env.VITE_SERVER + "/api/equipment/delete/" + id,
+        {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: "Bearer " + userCtx.accessToken,
+          },
+        }
+      );
+      getEquipment();
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
+  const updateEquipment = async (id) => {
+    try {
+      const res = await fetch(
+        import.meta.env.VITE_SERVER + "/api/equipment/update/" + id,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: "Bearer " + userCtx.accessToken,
+          },
+          body: JSON.stringify({ type, model, modification }),
+        }
+      );
+      getEquipment();
+      setType("");
+      setModel("");
+      setModification("");
     } catch (error) {
       console.log(error.message);
     }
@@ -84,16 +133,66 @@ const Profile = () => {
           return (
             <Equipment
               key={item.equipment_id}
-              id={item.equipment_id}
+              equipment_id={item.equipment_id}
               equipment_type={item.equipment_type}
               equipment_model={item.equipment_model}
               equipment_modification={item.equipment_modification}
+              deleteEquipment={deleteEquipment}
+              updateEquipment={updateEquipment}
+              getEquipment={getEquipment}
             />
           );
         })}
 
         <div className="text-center my-5 mx-5">
           <h5>Add Equipment</h5>
+          <div>
+            <select
+              id="equipment"
+              name="equipment"
+              className="form-control my-3"
+              defaultValue={""}
+              onChange={(e) => setType(e.target.value)}
+            >
+              <option className="form-control my-3" value="" disabled>
+                --Please select an equipment type--
+              </option>
+              <option className="form-control my-3" value="GRINDER">
+                Grinder
+              </option>
+              <option className="form-control my-3" value="ESPRESSOMACHINE">
+                Espresso Machine
+              </option>
+              <option className="form-control my-3" value="V60">
+                V60
+              </option>
+            </select>
+
+            <input
+              type="text"
+              placeholder="Input equipment model here"
+              className="form-control my-3"
+              value={model}
+              onChange={(e) => setModel(e.target.value)}
+            ></input>
+
+            <input
+              type="text"
+              placeholder="Input equipment modification here"
+              className="form-control my-3"
+              value={modification}
+              onChange={(e) => setModification(e.target.value)}
+            ></input>
+
+            <button
+              className="btn btn-success btn-block"
+              onClick={() => {
+                addEquipment(type);
+              }}
+            >
+              Add
+            </button>
+          </div>
         </div>
       </div>
     </>

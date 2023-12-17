@@ -21,3 +21,13 @@
   padding: 5px;
   margin: 5px;
 }
+
+.addingEquipment {
+  border: 0.5px solid grey;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 500px;
+}

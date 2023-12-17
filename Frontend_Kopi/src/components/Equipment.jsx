@@ -1,11 +1,25 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import UserContext from "../context/user";
 import styles from "./Equipment.module.css";
+import UpdateEquipmentModal from "./UpdateEquipmentModal";
 
 const Equipment = (props) => {
   const userCtx = useContext(UserContext);
+  const [showUpdateModal, setShowUpdateModal] = useState(false);
+
   return (
     <div>
+      {showUpdateModal && (
+        <UpdateEquipmentModal
+          equipment_id={props.equipment_id}
+          equipment_type={props.equipment_type}
+          equipment_model={props.equipment_model}
+          equipment_modification={props.equipment_modification}
+          updateEquipment={props.updateEquipment}
+          getEquipment={props.getEquipment}
+          setShowUpdateModal={setShowUpdateModal}
+        />
+      )}
       <div className={`${styles.equipment}`}>
         <div className={`${styles.equipmentCard}`}>
           {/* <div className={`${styles.equipment-detail}`}></div> */}
@@ -18,6 +32,18 @@ const Equipment = (props) => {
           <div className={`${styles.equipmentDetail}`}>
             Modification: {props.equipment_modification}
           </div>
+          <button
+            className="btn btn-success btn-block my-2"
+            onClick={() => props.updateEquipment()}
+          >
+            Update
+          </button>
+          <button
+            className="btn btn-success btn-block my-2"
+            onClick={() => props.deleteEquipment(props.equipment_id)}
+          >
+            Delete
+          </button>
         </div>
       </div>
     </div>

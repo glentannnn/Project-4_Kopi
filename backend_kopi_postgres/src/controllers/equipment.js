@@ -55,7 +55,7 @@ const deleteEquipment = async (req, res) => {
       .json({ status: "success", msg: "equipment deleted successfully" });
   } catch (error) {
     console.log(error.message);
-    res.status(400).json({ status: "error", msg: "error updating equipment" });
+    res.status(400).json({ status: "error", msg: "error deleting equipment" });
   }
 };
 
