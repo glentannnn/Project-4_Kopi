@@ -16,6 +16,20 @@ const getAllUsers = async (req, res) => {
   }
 };
 
+const getUser = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const user = await pool.query(
+      "SELECT user_id, user_name, user_email, user_role FROM users WHERE user_id = $1",
+      [id]
+    );
+    res.json(user.rows[0]);
+  } catch (error) {
+    console.log(error.message);
+    res.status(400).json({ status: "error", msg: "error getting users" });
+  }
+};
+
 const register = async (req, res) => {
   try {
     // 1. destructure the req.body (name, email, password)
@@ -44,7 +58,7 @@ const register = async (req, res) => {
     // res.json(newUser.rows[0]);
 
     // 5. generating our jwt token (CHECK WHETHER WE CAN REMOVE THIS)
-    const accessToken = jwtGenerator(newUser.rows[0].user_id);
+    const accessToken = jwtGenerator(name, email, password, role);
     res.json({ accessToken });
   } catch (error) {
     console.log(error.message);
@@ -145,4 +159,21 @@ const deleteUser = async (req, res) => {
   }
 };
 
-module.exports = { getAllUsers, register, login, refresh, deleteUser };
+const verify = async (req, res) => {
+  try {
+    res.json(true);
+  } catch (error) {
+    console.log(error.message);
+    res.status(500).json({ status: "error", msg: "server error" });
+  }
+};
+
+module.exports = {
+  getAllUsers,
+  getUser,
+  register,
+  login,
+  refresh,
+  deleteUser,
+  verify,
+};

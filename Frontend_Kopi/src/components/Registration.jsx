@@ -1,16 +1,26 @@
 import React, { useContext, useState, useEffect } from "react";
-import UserContext from "../context/user";
-import { Link } from "react-router-dom";
+// import UserContext from "../context/user";
+// import { Link } from "react-router-dom";
 
 const Registration = (props) => {
-  const [name, setName] = useState();
-  const [email, setEmail] = useState();
-  const [password, setPassword] = useState();
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [role, setRole] = useState("");
   //  role by default should be user, unless changed by admin. Default admin will be created in the backend.
 
   const registerUser = async () => {
     try {
-      const res = await fetch();
+      const res = await fetch(import.meta.env.VITE_SERVER + "/auth/register", {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application.json",
+        },
+        body: JSON.stringify({ name, email, password, role }),
+      });
+
+      const data = await res.json();
+      console.log(data);
     } catch (error) {
       console.log(error.message);
     }
@@ -24,6 +34,7 @@ const Registration = (props) => {
     <>
       <div className="text-center my-3 mx-5">
         <h3>Register for the Kopi App</h3>
+
         <input
           type="text"
           placeholder="name"
@@ -39,17 +50,43 @@ const Registration = (props) => {
           onChange={(e) => setEmail(e.target.value)}
         />
         <input
-          type="password"
+          type="text"
           placeholder="password"
           className="form-control my-3"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
+        <select
+          id="role"
+          name="role"
+          className="form-control my-3"
+          value={role}
+          onChange={(e) => setRole(e.target.value)}
+        >
+          <option value="USER" className="form-control my-3">
+            USER
+          </option>
+        </select>
+
+        <button
+          className="btn btn-success btn-block"
+          onClick={() => {
+            registerUser();
+          }}
+        >
+          Register
+        </button>
 
         <div>
-          <Link to="/" onClick={() => props.setShowLogin(true)}>
+          {/* <Link to="/login" onClick={() => props.setShowLogin(true)}>
             Already a user? Go to login here.
-          </Link>
+          </Link> */}
+          <button
+            className="btn btn-success btn-block my-2"
+            onClick={() => props.setShowLogin(true)}
+          >
+            New to Kopi App? Register here.
+          </button>
         </div>
       </div>
     </>

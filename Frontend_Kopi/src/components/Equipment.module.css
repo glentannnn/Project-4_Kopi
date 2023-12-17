@@ -1,0 +1,23 @@
+.equipment {
+  display: flex;
+  flex-direction: row;
+}
+
+.equipmentCard {
+  border: 0.5px solid grey;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: left;
+  width: 300px;
+  padding: 10px 5px;
+  margin: 10px;
+}
+
+.equipmentDetail {
+  border: 0.5px solid grey;
+  border-radius: 5px;
+  padding: 5px;
+  margin: 5px;
+}

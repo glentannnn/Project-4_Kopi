@@ -1,14 +1,13 @@
 import React, { useContext, useEffect, useState } from "react";
 import UserContext from "../context/user";
 import { jwtDecode } from "jwt-decode";
-import { useNavigate, Link } from "react-router-dom";
+import styles from "./Login.module.css";
+// import { Link } from "react-router-dom";
 
 const Login = (props) => {
   const userCtx = useContext(UserContext);
-  const [email, setEmail] = useState();
-  const [password, setPassword] = useState();
-  const navigate = useNavigate();
-  //   const body = { email, password };
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const handleLogin = async () => {
     try {
@@ -19,24 +18,27 @@ const Login = (props) => {
         },
         body: JSON.stringify({ email, password }),
       });
-
       const data = await res.json();
       console.log(data);
+
       //   Input data into UserContext
-      userCtx.setAccessToken(data.access);
-      const decoded = jwtDecode(data.access);
+      userCtx.setAccessToken(data.accessToken);
+      const decoded = jwtDecode(data.accessToken);
+      console.log(decoded);
+      userCtx.setId(decoded.id);
+      userCtx.setName(decoded.name);
       userCtx.setEmail(decoded.email);
       userCtx.setPassword(decoded.password);
       userCtx.setRole(decoded.role);
       console.log(userCtx);
+
+      localStorage.setItem("accessToken", data.accessToken);
+      props.setShowLogin(false);
+      props.setAuthentication(true);
     } catch (error) {
       console.log(error.message);
     }
   };
-
-  //   const navigateToProfile = () => {
-  //     navigate("/profile");
-  //   };
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -66,12 +68,18 @@ const Login = (props) => {
             handleLogin();
           }}
         >
-          Submit
+          Enter
         </button>
         <div>
-          <Link to="/registration" onClick={() => props.setShowLogin(false)}>
+          {/* <Link to="/registration" onClick={() => props.setShowLogin(false)}>
             New to Kopi App? Register here.
-          </Link>
+          </Link> */}
+          <button
+            className="btn btn-success btn-block my-2"
+            onClick={() => props.setShowLogin(false)}
+          >
+            New to Kopi App? Register here.
+          </button>
         </div>
       </div>
     </>
@@ -79,4 +87,3 @@ const Login = (props) => {
 };
 
 export default Login;
-// I need to have the logic where if the user fails login, they get routed to the registration page

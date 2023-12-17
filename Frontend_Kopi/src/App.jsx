@@ -1,20 +1,51 @@
-import React, { useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import React, { useEffect, useState, useContext } from "react";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
 
+import UserContext from "./context/user";
 import Registration from "./components/Registration";
 import Login from "./components/Login";
 import Profile from "./components/Profile";
 // import Add from ",/components/Add";
 // import Log from "./components/Log";
-import UserContext from "./context/user";
 
 function App() {
   const [showLogin, setShowLogin] = useState(true);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const userCtx = useContext(UserContext);
   const [accessToken, setAccessToken] = useState("");
+  const [id, setId] = useState("");
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [role, setRole] = useState("");
+
+  // const checkAuthenticated = async () => {
+  //   try {
+  //     const res = await fetch(import.meta.env.VITE_SERVER + "/auth/verify", {
+  //       mathod: "GET",
+  //       headers: {
+  //         Authentication: "Bearer " + userCtx.accessToken,
+  //       },
+  //     });
+  //     const data = await res.json();
+  //     data === true ? setIsAuthenticated(true) : setIsAuthenticated(false);
+  //   } catch (error) {
+  //     console.log(error.message);
+  //   }
+  // };
+
+  const setAuthentication = (boolean) => {
+    setIsAuthenticated(boolean);
+  };
+
+  // useEffect(() => {
+  //   checkAuthenticated();
+  // }, []);
 
   return (
     <>
@@ -22,6 +53,10 @@ function App() {
         value={{
           accessToken,
           setAccessToken,
+          id,
+          setId,
+          name,
+          setName,
           email,
           setEmail,
           password,
@@ -30,25 +65,86 @@ function App() {
           setRole,
         }}
       >
-        <Router>
+        {/* <Router>
           <Routes>
             <Route
-              path="/"
+              path="/login"
               element={
-                accessToken.length === 0 &&
-                showLogin && <Login setShowLogin={setShowLogin} />
+                <Login
+                  setShowLogin={setShowLogin}
+                  setAuthentication={setAuthentication}
+                />
+              }
+              render={(props) =>
+                !isAuthenticated ? (
+                  <Login
+                    {...props}
+                    setShowLogin={setShowLogin}
+                    setAuthentication={setAuthentication}
+                  />
+                ) : (
+                  <Navigate to="/profile" />
+                )
               }
             />
+
             <Route
               path="/registration"
               element={
-                accessToken.length === 0 &&
-                !showLogin && <Registration setShowLogin={setShowLogin} />
+                <Registration
+                  setShowLogin={setShowLogin}
+                  setAuthentication={setAuthentication}
+                />
+              }
+              render={(props) =>
+                !isAuthenticated ? (
+                  <Registration
+                    {...props}
+                    setShowLogin={setShowLogin}
+                    setAuthentication={setAuthentication}
+                  />
+                ) : (
+                  <Navigate to="/login" />
+                )
               }
             />
-            <Route path="/profile" element={accessToken > 0 && <Profile />} />
+
+            <Route
+              path="/profile"
+              element={
+                <Profile
+                  setShowLogin={setShowLogin}
+                  setAuthentication={setAuthentication}
+                />
+              }
+              render={(props) =>
+                isAuthenticated ? (
+                  <Profile
+                    {...props}
+                    setShowLogin={setShowLogin}
+                    setAuthentication={setAuthentication}
+                  />
+                ) : (
+                  <Navigate to="/login" />
+                )
+              }
+            />
           </Routes>
-        </Router>
+        </Router> */}
+
+        {!isAuthenticated && showLogin && (
+          <Login
+            setShowLogin={setShowLogin}
+            setAuthentication={setAuthentication}
+          />
+        )}
+        {!isAuthenticated && !showLogin && (
+          <Registration
+            setShowLogin={setShowLogin}
+            setAuthentication={setAuthentication}
+          />
+        )}
+        {isAuthenticated && <Profile setAuthentication={setAuthentication} />}
       </UserContext.Provider>
     </>
   );
