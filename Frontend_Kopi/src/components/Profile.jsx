@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import UserContext from "../context/user";
 // import Navbar from "./Navbar";
 import Equipment from "./Equipment";
-// import Bean from "./Bean";
+// import Beans from "./Beans";
 // import Users from './Users'
 import styles from "./Equipment.module.css";
 import {
@@ -112,9 +112,9 @@ const Profile = () => {
         }
       );
       getEquipment();
-      setType("");
-      setModel("");
-      setModification("");
+      // setType("");
+      // setModel("");
+      // setModification("");
     } catch (error) {
       console.log(error.message);
     }
@@ -187,15 +187,14 @@ const Profile = () => {
 
             <input
               type="text"
-              placeholder="Input equipment model here"
+              placeholder="Input equipment's model here"
               className="form-control my-3"
               value={model}
               onChange={(e) => setModel(e.target.value)}
             ></input>
-
             <input
               type="text"
-              placeholder="Input equipment modification here"
+              placeholder="Input equipment's modification here"
               className="form-control my-3"
               value={modification}
               onChange={(e) => setModification(e.target.value)}
@@ -213,7 +212,7 @@ const Profile = () => {
         </div>
 
         <Routes>
-          {/* <Route path="/profile/beans" element={<Bean />} />
+          {/* <Route path="/profile/beans" element={<Beans />} />
           <Route path="/profile/users" element={<Users />} /> */}
         </Routes>
       </div>

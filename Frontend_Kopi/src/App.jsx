@@ -11,7 +11,7 @@ import Login from "./components/Login";
 import Profile from "./components/Profile";
 
 function App() {
-  const [showLogin, setShowLogin] = useState(true);
+  // const [showLogin, setShowLogin] = useState(true);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const userCtx = useContext(UserContext);
   const [accessToken, setAccessToken] = useState("");
@@ -62,73 +62,6 @@ function App() {
           setRole,
         }}
       >
-        {/* <Router>
-          <Routes>
-            <Route
-              path="/login"
-              element={
-                <Login
-                  setShowLogin={setShowLogin}
-                  setAuthentication={setAuthentication}
-                />
-              }
-              render={(props) =>
-                !isAuthenticated ? (
-                  <Login
-                    {...props}
-                    setShowLogin={setShowLogin}
-                    setAuthentication={setAuthentication}
-                  />
-                ) : (
-                  <Navigate to="/profile" />
-                )
-              }
-            />
-
-            <Route
-              path="/registration"
-              element={
-                <Registration
-                  setShowLogin={setShowLogin}
-                  setAuthentication={setAuthentication}
-                />
-              }
-              render={(props) =>
-                !isAuthenticated ? (
-                  <Registration
-                    {...props}
-                    setShowLogin={setShowLogin}
-                    setAuthentication={setAuthentication}
-                  />
-                ) : (
-                  <Navigate to="/login" />
-                )
-              }
-            />
-
-            <Route
-              path="/profile"
-              element={
-                <Profile
-                  setShowLogin={setShowLogin}
-                  setAuthentication={setAuthentication}
-                />
-              }
-              render={(props) =>
-                isAuthenticated ? (
-                  <Profile
-                    {...props}
-                    setShowLogin={setShowLogin}
-                    setAuthentication={setAuthentication}
-                  />
-                ) : (
-                  <Navigate to="/login" />
-                )
-              }
-            />
-          </Routes>
-        </Router> */}
-
         <Router>
           <Routes>
             <Route path="/" element={<Navigate replace to="/login" />}></Route>
@@ -151,8 +84,8 @@ function App() {
               element={
                 isAuthenticated ? (
                   <Profile>
-                    {/* <Route path="/bean" element={<Bean />} />
-                    <Route path="/users" element={<Users />} /> */}
+                    {/* <Route path="/beans" element={<Beans />} /> */}
+                    {/* <Route path="/users" element={<Users />} /> */}
                   </Profile>
                 ) : (
                   <Navigate replace to="/login" />

@@ -7,7 +7,13 @@ const Navbar = () => {
     <nav>
       <ul>
         <li>
-          <NavLink to="" />
+          <NavLink to="/profile">Profile</NavLink>
+        </li>
+        <li>
+          <NavLink to="/profile/beans">Beans</NavLink>
+        </li>
+        <li>
+          <NavLink to="/profile/users">Users</NavLink>
         </li>
       </ul>
     </nav>

@@ -38,6 +38,7 @@ const Equipment = (props) => {
           <div className={`${styles.equipmentDetail}`}>
             Modification: {props.equipment_modification}
           </div>
+
           <button
             className="btn btn-success btn-block my-2"
             onClick={() => setShowUpdateModal(true)}
