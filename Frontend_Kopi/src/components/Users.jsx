@@ -1,6 +1,7 @@
 import React, { useState, useContext } from "react";
 import styles from "./UpdateUserModal";
 import UserContext from "../context/user";
+import { setegid } from "process";
 
 const Users = () => {
   const userCtx = useContext(UserContext);
@@ -23,6 +24,22 @@ const Users = () => {
       const data = await res.json();
       console.log(data);
       setUsers(data);
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
+  const addUser = async () => {
+    try {
+      const res = await fetch(import.meta.env.VITE_SERVER + "/auth/register", {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + userCtx.accessToken,
+        },
+        body: JSON.stringify({ name, email, password, role }),
+      });
+      getUsers();
     } catch (error) {
       console.log(error.message);
     }
@@ -100,6 +117,61 @@ const Users = () => {
           </button>
         </div>;
       })}
+
+      <div className="text-center my-5 mx-5">
+        <h5>Add User</h5>
+        <div>
+          <select
+            id="users"
+            name="users"
+            className="form-control my-3"
+            defaultValue={""}
+            onChange={(e) => setUsers(e.target.value)}
+          >
+            <option className="form-control my-3" value="" disabled>
+              --Please user's role--
+            </option>
+            {/* loop below, put this to later after functionality completed. Also attempt to reformat the words to nicer looking words from backend */}
+            <option className="form-control my-3" value="USER">
+              User
+            </option>
+            <option className="form-control my-3" value="ADMIN">
+              Admin
+            </option>
+          </select>
+
+          <input
+            type="text"
+            placeholder="Input equipment's model here"
+            className="form-control my-3"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          ></input>
+          <input
+            type="text"
+            placeholder="Input equipment's modification here"
+            className="form-control my-3"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          ></input>
+          <input
+            type="text"
+            placeholder="Input equipment's modification here"
+            className="form-control my-3"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          ></input>
+
+          <button
+            className="btn btn-success btn-block"
+            onClick={() => {
+              addUser();
+            }}
+          >
+            Add
+          </button>
+        </div>
+      </div>
     </>
   );
 };
