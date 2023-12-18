@@ -1,8 +1,10 @@
 import React, { useContext, useState } from "react";
+import styles from "./UpdateBeanModal";
 import UserContext from "../context/user";
 
 const Beans = () => {
   const userCtx = useContext(UserContext);
+  const [showUpdateModal, setShowUpdateModal] = useState(false);
   const [beans, setBeans] = useState([]);
   const [country, setCountry] = useState("");
   const [region, setRegion] = useState("");

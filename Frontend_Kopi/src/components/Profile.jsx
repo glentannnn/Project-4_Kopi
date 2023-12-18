@@ -211,10 +211,10 @@ const Profile = () => {
           </div>
         </div>
 
-        <Routes>
-          {/* <Route path="/profile/beans" element={<Beans />} />
-          <Route path="/profile/users" element={<Users />} /> */}
-        </Routes>
+        {/* <Routes>
+          <Route path="/profile/beans" element={<Beans />} />
+          <Route path="/profile/users" element={<Users />} />
+        </Routes> */}
       </div>
     </>
   );

@@ -26,6 +26,7 @@ const Equipment = (props) => {
           setModification={props.setModification}
         />
       )}
+
       <div className={`${styles.equipment}`}>
         <div className={`${styles.equipmentCard}`}>
           {/* <div className={`${styles.equipment-detail}`}></div> */}
