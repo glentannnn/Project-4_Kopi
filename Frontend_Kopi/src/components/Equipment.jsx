@@ -18,6 +18,12 @@ const Equipment = (props) => {
           updateEquipment={props.updateEquipment}
           getEquipment={props.getEquipment}
           setShowUpdateModal={setShowUpdateModal}
+          type={props.type}
+          setType={props.setType}
+          model={props.model}
+          setModel={props.setModel}
+          modification={props.modification}
+          setModification={props.setModification}
         />
       )}
       <div className={`${styles.equipment}`}>
@@ -34,7 +40,7 @@ const Equipment = (props) => {
           </div>
           <button
             className="btn btn-success btn-block my-2"
-            onClick={() => props.updateEquipment()}
+            onClick={() => setShowUpdateModal(true)}
           >
             Update
           </button>

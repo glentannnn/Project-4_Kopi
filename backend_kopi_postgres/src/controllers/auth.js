@@ -7,7 +7,7 @@ const { jwtGenerator, jwtRefresh } = require("../utils/jwtGenerator");
 const getAllUsers = async (req, res) => {
   try {
     const userList = await pool.query(
-      "SELECT user_id, user_name, user_email, user_role FROM users"
+      "SELECT user_id, user_name, user_email, user_role, user_password FROM users"
     );
     res.json(userList.rows);
   } catch (error) {
@@ -33,6 +33,8 @@ const getUser = async (req, res) => {
 const register = async (req, res) => {
   try {
     // 1. destructure the req.body (name, email, password)
+    console.log(req.body);
+
     const { name, email, password, role } = req.body;
 
     // 2. check if user exist (if user exist, then throw error)
@@ -46,14 +48,15 @@ const register = async (req, res) => {
     }
 
     // 3. bcrypt the user password
-    const saltRound = 10;
-    const salt = await bcrypt.genSalt(saltRound);
-    const bcryptPassword = await bcrypt.hash(password, salt);
+    // const saltRound = 10;
+    // const salt = await bcrypt.genSalt(saltRound);
+    // const bcryptPassword = await bcrypt.hash(password, salt);
+    const hash = await bcrypt.hash(password, 12);
 
     // 4. enter the new user inside our
     const newUser = await pool.query(
       "INSERT INTO users (user_name, user_email, user_password, user_role) VALUES ($1, $2, $3, $4) RETURNING *",
-      [name, email, bcryptPassword, role]
+      [name, email, hash, role]
     );
     // res.json(newUser.rows[0]);
 
@@ -62,7 +65,7 @@ const register = async (req, res) => {
     res.json({ accessToken });
   } catch (error) {
     console.log(error.message);
-    res.status(500).json({ status: "error", msg: "server error" });
+    res.status(400).json({ status: "error", msg: "server error" });
   }
 };
 
@@ -121,7 +124,7 @@ const login = async (req, res) => {
     res.json({ access, refresh }); */
   } catch (error) {
     console.log(error.message);
-    res.status(500).json({ status: "error", msg: "server error" });
+    res.status(400).json({ status: "error", msg: "server error" });
   }
 };
 
@@ -155,7 +158,7 @@ const deleteUser = async (req, res) => {
     res.json("User deleted");
   } catch (error) {
     console.log(error.message);
-    res.status(500).json({ status: "error", msg: "server error" });
+    res.status(400).json({ status: "error", msg: "server error" });
   }
 };
 
@@ -164,7 +167,7 @@ const verify = async (req, res) => {
     res.json(true);
   } catch (error) {
     console.log(error.message);
-    res.status(500).json({ status: "error", msg: "server error" });
+    res.status(400).json({ status: "error", msg: "server error" });
   }
 };
 

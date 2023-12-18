@@ -1,7 +1,17 @@
 import React, { useContext, useEffect, useState } from "react";
 import UserContext from "../context/user";
+// import Navbar from "./Navbar";
 import Equipment from "./Equipment";
+// import Bean from "./Bean";
+// import Users from './Users'
 import styles from "./Equipment.module.css";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
+import Navbar from "./Navbar";
 
 const Profile = () => {
   const [name, setName] = useState("");
@@ -114,8 +124,6 @@ const Profile = () => {
     window.scrollTo(0, 0);
   }, []);
 
-  // We want the page to useEffect when there is update to the state of equipment, but right now if I put the equipment state into the second argument, the console goes crazy.
-
   useEffect(() => {
     getName();
     getEquipment();
@@ -123,6 +131,8 @@ const Profile = () => {
 
   return (
     <>
+      <Navbar></Navbar>
+
       <div className="text-left my-5 mx-5">
         <h3>Good day, {name}!</h3>
         <div className="text-center my-5 mx-5">
@@ -140,6 +150,12 @@ const Profile = () => {
               deleteEquipment={deleteEquipment}
               updateEquipment={updateEquipment}
               getEquipment={getEquipment}
+              type={type}
+              setType={setType}
+              model={model}
+              setModel={setModel}
+              modification={modification}
+              setModification={setModification}
             />
           );
         })}
@@ -157,6 +173,7 @@ const Profile = () => {
               <option className="form-control my-3" value="" disabled>
                 --Please select an equipment type--
               </option>
+              {/* loop below, put this to later after functionality completed. Also attempt to reformat the words to nicer looking words from backend */}
               <option className="form-control my-3" value="GRINDER">
                 Grinder
               </option>
@@ -187,13 +204,18 @@ const Profile = () => {
             <button
               className="btn btn-success btn-block"
               onClick={() => {
-                addEquipment(type);
+                addEquipment();
               }}
             >
               Add
             </button>
           </div>
         </div>
+
+        <Routes>
+          {/* <Route path="/profile/beans" element={<Bean />} />
+          <Route path="/profile/users" element={<Users />} /> */}
+        </Routes>
       </div>
     </>
   );

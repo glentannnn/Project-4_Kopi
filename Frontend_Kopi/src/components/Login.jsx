@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import UserContext from "../context/user";
 import { jwtDecode } from "jwt-decode";
 import styles from "./Login.module.css";
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Login = (props) => {
   const userCtx = useContext(UserContext);
@@ -33,7 +33,7 @@ const Login = (props) => {
       console.log(userCtx);
 
       localStorage.setItem("accessToken", data.accessToken);
-      props.setShowLogin(false);
+      //   props.setShowLogin(false);
       props.setAuthentication(true);
     } catch (error) {
       console.log(error.message);
@@ -48,6 +48,7 @@ const Login = (props) => {
     <>
       <div className="text-center my-5 mx-5">
         <h3> Welcome to the Kopi App </h3>
+
         <input
           type="email"
           placeholder="email"
@@ -55,6 +56,7 @@ const Login = (props) => {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
+
         <input
           type="password"
           placeholder="password"
@@ -62,6 +64,7 @@ const Login = (props) => {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
+
         <button
           className="btn btn-success btn-block"
           onClick={() => {
@@ -70,16 +73,9 @@ const Login = (props) => {
         >
           Enter
         </button>
+
         <div>
-          {/* <Link to="/registration" onClick={() => props.setShowLogin(false)}>
-            New to Kopi App? Register here.
-          </Link> */}
-          <button
-            className="btn btn-success btn-block my-2"
-            onClick={() => props.setShowLogin(false)}
-          >
-            New to Kopi App? Register here.
-          </button>
+          <Link to="/registration">New to Kopi App? Register here.</Link>
         </div>
       </div>
     </>

@@ -5,13 +5,10 @@ import {
   Route,
   Navigate,
 } from "react-router-dom";
-
 import UserContext from "./context/user";
 import Registration from "./components/Registration";
 import Login from "./components/Login";
 import Profile from "./components/Profile";
-// import Add from ",/components/Add";
-// import Log from "./components/Log";
 
 function App() {
   const [showLogin, setShowLogin] = useState(true);
@@ -132,7 +129,40 @@ function App() {
           </Routes>
         </Router> */}
 
-        {!isAuthenticated && showLogin && (
+        <Router>
+          <Routes>
+            <Route path="/" element={<Navigate replace to="/login" />}></Route>
+            <Route
+              path="/login"
+              element={
+                !isAuthenticated ? (
+                  <Login setAuthentication={setAuthentication} />
+                ) : (
+                  <Navigate replace to="/profile" />
+                )
+              }
+            />
+            <Route
+              path="/registration"
+              element={<Registration setAuthentication={setAuthentication} />}
+            />
+            <Route
+              path="/profile/*"
+              element={
+                isAuthenticated ? (
+                  <Profile>
+                    {/* <Route path="/bean" element={<Bean />} />
+                    <Route path="/users" element={<Users />} /> */}
+                  </Profile>
+                ) : (
+                  <Navigate replace to="/login" />
+                )
+              }
+            />
+          </Routes>
+        </Router>
+
+        {/* {!isAuthenticated && showLogin && (
           <Login
             setShowLogin={setShowLogin}
             setAuthentication={setAuthentication}
@@ -144,7 +174,7 @@ function App() {
             setAuthentication={setAuthentication}
           />
         )}
-        {isAuthenticated && <Profile setAuthentication={setAuthentication} />}
+        {isAuthenticated && <Profile setAuthentication={setAuthentication} />} */}
       </UserContext.Provider>
     </>
   );
