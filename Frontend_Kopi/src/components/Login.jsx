@@ -73,7 +73,7 @@ const Login = (props) => {
         >
           Enter
         </button>
-
+        <br></br>
         <div>
           <Link to="/registration">New to Kopi App? Register here.</Link>
         </div>

@@ -1,6 +1,9 @@
-import React, { useContext, useState } from "react";
-import styles from "./UpdateBeanModal";
-import UserContext from "../context/user";
+import React, { useContext, useState, useEffect } from "react";
+import UserContext from "../../context/user";
+import Navbar from "../Navbar";
+import styles from "./Beans.module.css";
+import UpdateBeanModal from "./UpdateBeanModal";
+// import UpdateBeanModal from "./UpdateBeanModal";
 
 const Beans = () => {
   const userCtx = useContext(UserContext);
@@ -51,6 +54,13 @@ const Beans = () => {
         }),
       });
       getBeans();
+      setCountry("");
+      setRegion("");
+      setType("");
+      setTaste("");
+      setRoastdate("");
+      setPrevgrindsize("");
+      setRemarks("");
     } catch (error) {
       console.log(error.message);
     }
@@ -101,6 +111,10 @@ const Beans = () => {
     }
   };
 
+  const bean_id = beans.map((item) => {
+    item.bean_id;
+  });
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -111,64 +125,104 @@ const Beans = () => {
 
   return (
     <>
+      <Navbar></Navbar>
+
       <div className="text-center my-5 mx-5">
         <h5>Your Beans</h5>
       </div>
 
+      {showUpdateModal && (
+        <UpdateBeanModal
+          bean_id={bean_id}
+          beans={beans}
+          country={country}
+          setCountry={setCountry}
+          region={region}
+          setRegion={setRegion}
+          type={type}
+          setType={setType}
+          taste={taste}
+          setTaste={setTaste}
+          roastdate={roastdate}
+          setRoastdate={setRoastdate}
+          prevgrindsize={prevgrindsize}
+          setPrevgrindsize={setPrevgrindsize}
+          remarks={remarks}
+          setRemarks={setRemarks}
+          updateBeans={updateBeans}
+          setShowUpdateModal={setShowUpdateModal}
+        />
+      )}
+
       {beans.map((item) => {
-        <div className={`${styles.beans}`}>
-          <div className={`${styles.beansCard}`}>
-            <div className={`${styles.beansDetail}`}>
-              Country: {item.bean_country}
-            </div>
-            <div className={`${styles.beansDetail}`}>
-              Region: {item.bean_region}
-            </div>
-            <div className={`${styles.beansDetail}`}>
-              Type: {item.bean_type}
-            </div>
-            <div className={`${styles.beansDetail}`}>
-              Taste: {item.bean_taste}
-            </div>
-            <div className={`${styles.beansDetail}`}>
-              Roast Date: {item.bean_roastdate}
-            </div>
-            <div className={`${styles.beansDetail}`}>
-              Prev Grind Size: {item.bean_prevgrindsize}
-            </div>
-            <div className={`${styles.beansDetail}`}>
-              Remarks: {item.bean_remark}
-            </div>
+        return (
+          <div key={item.bean_id} className={`${styles.beans}`}>
+            <div className={`${styles.beansCard}`}>
+              <div className={`${styles.beansDetail}`}>
+                Country: {item.bean_country}
+              </div>
+              <div className={`${styles.beansDetail}`}>
+                Region: {item.bean_region}
+              </div>
+              <div className={`${styles.beansDetail}`}>
+                Type: {item.bean_type}
+              </div>
+              <div className={`${styles.beansDetail}`}>
+                Taste: {item.bean_taste}
+              </div>
+              <div className={`${styles.beansDetail}`}>
+                Roast Date: {item.bean_roastdate}
+              </div>
+              <div className={`${styles.beansDetail}`}>
+                Prev Grind Size: {item.bean_prevgrindsize}
+              </div>
+              <div className={`${styles.beansDetail}`}>
+                Remarks: {item.bean_remarks}
+              </div>
 
-            {/* <button
-              className="btn btn-success btn-block my-2"
-              onClick={() => setShowUpdateModal(true)}
-            >
-              Update
-            </button> */}
-
-            <button
-              className="btn btn-success btn-block my-2"
-              onClick={() => deleteBeans(item.bean_id)}
-            >
-              Delete
-            </button>
+              <button
+                className="btn btn-success btn-block my-2"
+                onClick={() => setShowUpdateModal(true)}
+              >
+                Update
+              </button>
+              <button
+                className="btn btn-success btn-block my-2"
+                onClick={() => deleteBeans(item.bean_id)}
+              >
+                Delete
+              </button>
+            </div>
           </div>
-        </div>;
+        );
       })}
 
       <div className="text-center my-5 mx-5">
         <h5>Add Bean</h5>
         <div>
+          <input
+            type="text"
+            placeholder="Country"
+            className="form-control my-3"
+            value={country}
+            onChange={(e) => setCountry(e.target.value)}
+          ></input>
+          <input
+            type="text"
+            placeholder="Region"
+            className="form-control my-3"
+            value={region}
+            onChange={(e) => setRegion(e.target.value)}
+          ></input>
           <select
-            id="bean"
-            name="bean"
+            id="beans"
+            name="beans"
             className="form-control my-3"
             defaultValue={""}
             onChange={(e) => setType(e.target.value)}
           >
             <option className="form-control my-3" value="" disabled>
-              --Please select a bean type--
+              Type
             </option>
             {/* loop below, put this to later after functionality completed. Also attempt to reformat the words to nicer looking words from backend */}
             <option className="form-control my-3" value="ESPRESSO">
@@ -178,45 +232,30 @@ const Beans = () => {
               Filter
             </option>
           </select>
-
           <input
             type="text"
-            placeholder="Input bean's country here"
-            className="form-control my-3"
-            value={country}
-            onChange={(e) => setCountry(e.target.value)}
-          ></input>
-          <input
-            type="text"
-            placeholder="Input bean's region here"
-            className="form-control my-3"
-            value={region}
-            onChange={(e) => setRegion(e.target.value)}
-          ></input>
-          <input
-            type="text"
-            placeholder="Input bean's taste here"
+            placeholder="Tasting Notes"
             className="form-control my-3"
             value={taste}
             onChange={(e) => setTaste(e.target.value)}
           ></input>
           <input
-            type="text"
-            placeholder="Input bean's roast date here"
+            type="date"
+            placeholder="Roast Date"
             className="form-control my-3"
             value={roastdate}
             onChange={(e) => setRoastdate(e.target.value)}
           ></input>
           <input
             type="text"
-            placeholder="Input bean's previous grind size here"
+            placeholder="Previous Grind Size"
             className="form-control my-3"
             value={prevgrindsize}
             onChange={(e) => setPrevgrindsize(e.target.value)}
           ></input>
           <input
             type="text"
-            placeholder="Input bean's remark here"
+            placeholder="Remarks"
             className="form-control my-3"
             value={remarks}
             onChange={(e) => setRemarks(e.target.value)}

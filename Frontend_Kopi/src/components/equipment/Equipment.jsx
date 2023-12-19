@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import UserContext from "../context/user";
+import UserContext from "../../context/user";
 import styles from "./Equipment.module.css";
 import UpdateEquipmentModal from "./UpdateEquipmentModal";
 
@@ -11,19 +11,19 @@ const Equipment = (props) => {
     <div>
       {showUpdateModal && (
         <UpdateEquipmentModal
-          equipment_id={props.equipment_id}
-          equipment_type={props.equipment_type}
-          equipment_model={props.equipment_model}
-          equipment_modification={props.equipment_modification}
-          updateEquipment={props.updateEquipment}
-          getEquipment={props.getEquipment}
-          setShowUpdateModal={setShowUpdateModal}
           type={props.type}
           setType={props.setType}
           model={props.model}
           setModel={props.setModel}
           modification={props.modification}
           setModification={props.setModification}
+          equipment_id={props.equipment_id}
+          // equipment_type={props.equipment_type}
+          // equipment_model={props.equipment_model}
+          // equipment_modification={props.equipment_modification}
+          updateEquipment={props.updateEquipment}
+          // getEquipment={props.getEquipment}
+          setShowUpdateModal={setShowUpdateModal}
         />
       )}
 

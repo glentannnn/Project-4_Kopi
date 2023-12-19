@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import styles from "./Navbar.module.css";
+import UserContext from "../context/user";
 
 const Navbar = () => {
+  const userCtx = useContext(UserContext);
+
   return (
     <nav>
       <ul>
@@ -10,11 +13,13 @@ const Navbar = () => {
           <NavLink to="/profile">Profile</NavLink>
         </li>
         <li>
-          <NavLink to="/profile/beans">Beans</NavLink>
+          <NavLink to="/beans">Beans</NavLink>
         </li>
-        <li>
-          <NavLink to="/profile/users">Users</NavLink>
-        </li>
+        {userCtx.role === "ADMIN" ? (
+          <li>
+            <NavLink to="/users">Users</NavLink>
+          </li>
+        ) : null}
       </ul>
     </nav>
   );

@@ -1,10 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import UserContext from "../context/user";
-// import Navbar from "./Navbar";
-import Equipment from "./Equipment";
-// import Beans from "./Beans";
-// import Users from './Users'
-import styles from "./Equipment.module.css";
+import Equipment from "./equipment/Equipment";
 import {
   BrowserRouter as Router,
   Routes,
@@ -72,9 +68,9 @@ const Profile = () => {
 
       // const data = await res.json();
       getEquipment();
-      // setType("");
-      // setModel("");
-      // setModification("");
+      setType("");
+      setModel("");
+      setModification("");
     } catch (error) {
       console.log(error.message);
     }
@@ -134,7 +130,9 @@ const Profile = () => {
       <Navbar></Navbar>
 
       <div className="text-left my-5 mx-5">
-        <h3>Good day, {name}!</h3>
+        <h3>
+          Good day, <span>{name}</span>!
+        </h3>
         <div className="text-center my-5 mx-5">
           <h5>Your Equipment</h5>
         </div>
@@ -171,7 +169,7 @@ const Profile = () => {
               onChange={(e) => setType(e.target.value)}
             >
               <option className="form-control my-3" value="" disabled>
-                --Please select an equipment type--
+                Type
               </option>
               {/* loop below, put this to later after functionality completed. Also attempt to reformat the words to nicer looking words from backend */}
               <option className="form-control my-3" value="GRINDER">
@@ -187,14 +185,14 @@ const Profile = () => {
 
             <input
               type="text"
-              placeholder="Input equipment's model here"
+              placeholder="Model"
               className="form-control my-3"
               value={model}
               onChange={(e) => setModel(e.target.value)}
             ></input>
             <input
               type="text"
-              placeholder="Input equipment's modification here"
+              placeholder="Modification"
               className="form-control my-3"
               value={modification}
               onChange={(e) => setModification(e.target.value)}

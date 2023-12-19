@@ -1,5 +1,5 @@
 import React from "react";
-import { ReactDOM } from "react-dom";
+import { createPortal } from "react-dom";
 import styles from "./EquipmentModal.module.css";
 
 const Overlay = (props) => {
@@ -14,7 +14,7 @@ const Overlay = (props) => {
           onChange={(e) => props.setType(e.target.value)}
         >
           <option className="form-control my-3" value="" disabled>
-            --Please select an equipment type--
+            Type
           </option>
           {/* loop below, put this to later after functionality completed. Also attempt to reformat the words to nicer looking words from backend */}
           <option className="form-control my-3" value="GRINDER">
@@ -27,42 +27,29 @@ const Overlay = (props) => {
             V60
           </option>
         </select>
-
-        <div className="row">
-          <div className="col-md-3"></div>
-          <div className="col-md-3">Model</div>
-          <input
-            type="text"
-            className="col-md-3"
-            placeholder="Input changes to model here"
-            value={props.model}
-            onChange={(e) => props.setModel(e.target.value)}
-          />
-          <div className="col-md-3"></div>
-        </div>
-
-        <div className="row">
-          <div className="col-md-3"></div>
-          <div className="col-md-3">Modification</div>
-          <input
-            type="text"
-            className="col-md-3"
-            placeholder="Input changes to modification here"
-            value={props.modification}
-            onChange={(e) => props.setModification(e.target.value)}
-          />
-          <div className="col-md-3"></div>
-        </div>
+        <input
+          type="text"
+          placeholder="Input changes to model here"
+          className="form-control my-3"
+          value={props.model}
+          onChange={(e) => props.setModel(e.target.value)}
+        />
+        <input
+          type="text"
+          placeholder="Input changes to modification here"
+          className="form-control my-3"
+          value={props.modification}
+          onChange={(e) => props.setModification(e.target.value)}
+        />
 
         <button
           className="btn btn-success btn-block"
           onClick={() => {
-            props.updateEquipment();
+            props.updateEquipment(props.equipment_id);
           }}
         >
           Update
         </button>
-
         <button
           className="btn btn-success btn-block"
           onClick={() => {
@@ -79,8 +66,9 @@ const Overlay = (props) => {
 const UpdateEquipmentModal = (props) => {
   return (
     <>
-      {ReactDOM.createPortal(
+      {createPortal(
         <Overlay
+          equipment_id={props.equipment_id}
           type={props.type}
           setType={props.setType}
           model={props.model}

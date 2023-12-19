@@ -80,7 +80,7 @@ const Registration = (props) => {
         >
           Register
         </button>
-
+        <br></br>
         <div>
           <Link to="/login">Already a user? Go to login here.</Link>
           {/* <button

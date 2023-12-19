@@ -9,6 +9,8 @@ import UserContext from "./context/user";
 import Registration from "./components/Registration";
 import Login from "./components/Login";
 import Profile from "./components/Profile";
+import Beans from "./components/beans/Beans";
+import Users from "./components/users/Users";
 
 function App() {
   // const [showLogin, setShowLogin] = useState(true);
@@ -80,16 +82,21 @@ function App() {
               element={<Registration setAuthentication={setAuthentication} />}
             />
             <Route
-              path="/profile/*"
+              path="/profile"
               element={
-                isAuthenticated ? (
-                  <Profile>
-                    {/* <Route path="/beans" element={<Beans />} /> */}
-                    {/* <Route path="/users" element={<Users />} /> */}
-                  </Profile>
-                ) : (
-                  <Navigate replace to="/login" />
-                )
+                isAuthenticated ? <Profile /> : <Navigate replace to="/login" />
+              }
+            />
+            <Route
+              path="/beans"
+              element={
+                isAuthenticated ? <Beans /> : <Navigate replace to="/login" />
+              }
+            />
+            <Route
+              path="/users"
+              element={
+                isAuthenticated ? <Users /> : <Navigate replace to="/login" />
               }
             />
           </Routes>

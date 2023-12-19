@@ -8,18 +8,36 @@ CREATE TABLE users (
     user_name VARCHAR(200) NOT NULL,
     user_email VARCHAR(200) NOT NULL,
     user_password VARCHAR(200) NOT NULL,
-    user_role VARCHAR(200) NOT NULL,
+    user_role VARCHAR(200) NOT NULL -- Add DEFAULT 'USER'
+    FOREIGN KEY (user_role) REFERENCES roles(role)
+);
+
+-- Create NEW "users" table, changed the "user_id" to SERIAL. Also added DEFAULT for "user_role" here.
+CREATE TABLE users (
+    user_id SERIAL PRIMARY KEY,
+    user_name VARCHAR(200) NOT NULL,
+    user_email VARCHAR(200) NOT NULL,
+    user_password VARCHAR(200) NOT NULL,
+    user_role VARCHAR(200) NOT NULL DEFAULT 'USER',
     FOREIGN KEY (user_role) REFERENCES roles(role)
 );
 
 -- Create "roles" table.
 CREATE TABLE roles (
-    role VARCHAR(200) PRIMARY KEY DEFAULT 'user' 
+    role VARCHAR(200) PRIMARY KEY DEFAULT 'user' -- Change 'user' to 'USER'
+);
+
+-- Create NEW "roles" table. 
+CREATE TABLE roles (
+    role VARCHAR(200) PRIMARY KEY DEFAULT 'USER' 
 );
 
 -- Insert values into "roles" table.
 INSERT INTO roles (role) VALUES ('ADMIN');
 INSERT INTO roles (role) VALUES ('USER');
+
+
+
 
 -- Create "beans" table
 CREATE TABLE beans (
@@ -48,6 +66,10 @@ INSERT INTO beansType (bean_type) VALUES ('FILTER');
 --     code VARCHAR(2) PRIMARY KEY,
 --     name VARCHAR(100) NOT NULL UNIQUE
 -- )
+
+
+
+
 
 -- Create "equipment" table
 CREATE TABLE equipment (
