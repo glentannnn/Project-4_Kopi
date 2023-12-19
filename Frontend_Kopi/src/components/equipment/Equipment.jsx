@@ -18,9 +18,10 @@ const Equipment = (props) => {
           modification={props.modification}
           setModification={props.setModification}
           equipment_id={props.equipment_id}
-          // equipment_type={props.equipment_type}
-          // equipment_model={props.equipment_model}
-          // equipment_modification={props.equipment_modification}
+          // user_id={props.user_id}
+          equipment_type={props.equipment_type}
+          equipment_model={props.equipment_model}
+          equipment_modification={props.equipment_modification}
           updateEquipment={props.updateEquipment}
           // getEquipment={props.getEquipment}
           setShowUpdateModal={setShowUpdateModal}

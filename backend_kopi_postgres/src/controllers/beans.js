@@ -11,6 +11,22 @@ const getAllBeans = async (req, res) => {
   }
 };
 
+const getAllUserBeans = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const beansList = await pool.query(
+      "SELECT * FROM beans WHERE user_id = $1",
+      [id]
+    );
+    res.status(200).json(beansList.rows);
+  } catch (error) {
+    console.log(error.message);
+    res
+      .status(400)
+      .json({ status: "error", msg: "error getting user's beans" });
+  }
+};
+
 const addBean = async (req, res) => {
   try {
     const { country, region, type, taste, roastdate, prevgrindsize, remarks } =
@@ -18,6 +34,22 @@ const addBean = async (req, res) => {
     const newBean = await pool.query(
       "INSERT INTO beans (bean_country, bean_region, bean_type, bean_taste, bean_roastdate, bean_prevgrindsize, bean_remarks) VALUES ($1, $2, $3, $4, $5, $6, $7)",
       [country, region, type, taste, roastdate, prevgrindsize, remarks]
+    );
+    res.status(201).json({ status: "success", msg: "bean added successfully" });
+  } catch (error) {
+    console.log(error.message);
+    res.status(400).json({ status: "error", msg: "error adding bean" });
+  }
+};
+
+const addUserBean = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { country, region, type, taste, roastdate, prevgrindsize, remarks } =
+      req.body;
+    const newBean = await pool.query(
+      "INSERT INTO beans (bean_country, bean_region, bean_type, bean_taste, bean_roastdate, bean_prevgrindsize, bean_remarks, user_id) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)",
+      [country, region, type, taste, roastdate, prevgrindsize, remarks, id]
     );
     res.status(201).json({ status: "success", msg: "bean added successfully" });
   } catch (error) {
@@ -60,4 +92,11 @@ const deleteBean = async (req, res) => {
   }
 };
 
-module.exports = { getAllBeans, addBean, updateBean, deleteBean };
+module.exports = {
+  getAllBeans,
+  getAllUserBeans,
+  addBean,
+  addUserBean,
+  updateBean,
+  deleteBean,
+};

@@ -30,7 +30,6 @@ const Login = (props) => {
       userCtx.setEmail(decoded.email);
       userCtx.setPassword(decoded.password);
       userCtx.setRole(decoded.role);
-      console.log(userCtx);
 
       localStorage.setItem("accessToken", data.accessToken);
       //   props.setShowLogin(false);

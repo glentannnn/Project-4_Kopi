@@ -60,7 +60,7 @@ const Registration = (props) => {
           onChange={(e) => setPassword(e.target.value)}
         />
         {/* Remove the role section and set DEFAULT to DB side */}
-        <select
+        {/* <select
           id="role"
           name="role"
           className="form-control my-3"
@@ -70,7 +70,7 @@ const Registration = (props) => {
           <option className="form-control my-3" value="USER">
             USER
           </option>
-        </select>
+        </select> */}
 
         <button
           className="btn btn-success btn-block"

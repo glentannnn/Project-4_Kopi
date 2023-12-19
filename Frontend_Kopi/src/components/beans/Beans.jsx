@@ -20,13 +20,16 @@ const Beans = () => {
 
   const getBeans = async () => {
     try {
-      const res = await fetch(import.meta.env.VITE_SERVER + "/api/beans", {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: "Bearer " + userCtx.accessToken,
-        },
-      });
+      const res = await fetch(
+        import.meta.env.VITE_SERVER + "/api/beans/" + userCtx.id,
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: "Bearer " + userCtx.accessToken,
+          },
+        }
+      );
       const data = await res.json();
       console.log(data);
       setBeans(data);
@@ -37,22 +40,28 @@ const Beans = () => {
 
   const addBeans = async () => {
     try {
-      const res = await fetch(import.meta.env.VITE_SERVER + "/api/beans", {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: "Bearer " + userCtx.accessToken,
-        },
-        body: JSON.stringify({
-          country,
-          region,
-          type,
-          taste,
-          roastdate,
-          prevgrindsize,
-          remarks,
-        }),
-      });
+      const res = await fetch(
+        import.meta.env.VITE_SERVER + "/api/beans/" + userCtx.id,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: "Bearer " + userCtx.accessToken,
+          },
+          body: JSON.stringify({
+            country,
+            region,
+            type,
+            taste,
+            roastdate,
+            prevgrindsize,
+            remarks,
+          }),
+        }
+      );
+
+      const data = await res.json();
+      console.log(data);
       getBeans();
       setCountry("");
       setRegion("");
@@ -111,9 +120,9 @@ const Beans = () => {
     }
   };
 
-  const bean_id = beans.map((item) => {
-    item.bean_id;
-  });
+  // const bean_id = beans.map((item) => {
+  //   item.bean_id;
+  // });
 
   useEffect(() => {
     window.scrollTo(0, 0);

@@ -17,6 +17,7 @@ const Profile = () => {
   const [modification, setModification] = useState("");
   const userCtx = useContext(UserContext);
   console.log(equipment);
+  // console.log(userCtx.id);
 
   const getName = async () => {
     try {
@@ -40,13 +41,16 @@ const Profile = () => {
 
   const getEquipment = async () => {
     try {
-      const res = await fetch(import.meta.env.VITE_SERVER + "/api/equipment", {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: "Bearer " + userCtx.accessToken,
-        },
-      });
+      const res = await fetch(
+        import.meta.env.VITE_SERVER + "/api/equipment/" + userCtx.id,
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: "Bearer " + userCtx.accessToken,
+          },
+        }
+      );
       const data = await res.json();
       console.log(data);
       setEquipment(data);
@@ -57,16 +61,20 @@ const Profile = () => {
 
   const addEquipment = async () => {
     try {
-      const res = await fetch(import.meta.env.VITE_SERVER + "/api/equipment", {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: "Bearer " + userCtx.accessToken,
-        },
-        body: JSON.stringify({ type, model, modification }),
-      });
+      const res = await fetch(
+        import.meta.env.VITE_SERVER + "/api/equipment/" + userCtx.id,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: "Bearer " + userCtx.accessToken,
+          },
+          body: JSON.stringify({ type, model, modification }),
+        }
+      );
 
-      // const data = await res.json();
+      const data = await res.json();
+      alert(data);
       getEquipment();
       setType("");
       setModel("");
@@ -88,7 +96,7 @@ const Profile = () => {
           },
         }
       );
-      getEquipment();
+      getEquipment(userCtx.id);
     } catch (error) {
       console.log(error.message);
     }
@@ -107,7 +115,7 @@ const Profile = () => {
           body: JSON.stringify({ type, model, modification }),
         }
       );
-      getEquipment();
+      getEquipment(userCtx.id);
       // setType("");
       // setModel("");
       // setModification("");
@@ -145,6 +153,7 @@ const Profile = () => {
               equipment_type={item.equipment_type}
               equipment_model={item.equipment_model}
               equipment_modification={item.equipment_modification}
+              // user_id={item.user_id}
               deleteEquipment={deleteEquipment}
               updateEquipment={updateEquipment}
               getEquipment={getEquipment}
@@ -208,11 +217,6 @@ const Profile = () => {
             </button>
           </div>
         </div>
-
-        {/* <Routes>
-          <Route path="/profile/beans" element={<Beans />} />
-          <Route path="/profile/users" element={<Users />} />
-        </Routes> */}
       </div>
     </>
   );

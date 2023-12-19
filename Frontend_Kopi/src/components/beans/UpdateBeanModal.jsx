@@ -1,8 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { createPortal } from "react-dom";
 import styles from "./BeansModal.module.css";
 
 const Overlay = (props) => {
+  // useEffect(() => {
+  //   props.setCountry(props.bean_country);
+  //   props.setRegion(props.bean_region);
+  //   props.setType(props.bean_type);
+  //   props.setTaste(props.bean_taste);
+  //   props.setRoastdate(props.bean_roastdate);
+  //   props.setPrevgrindsize(props.bean_prevGrindSize);
+  //   props.setRemarks(props.bean_remarks);
+  // }, []);
+
   return (
     <div className={styles.backdrop}>
       <div className={styles.modal}>

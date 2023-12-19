@@ -1,8 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { createPortal } from "react-dom";
 import styles from "./EquipmentModal.module.css";
 
 const Overlay = (props) => {
+  useEffect(() => {
+    props.setType(props.equipment_type);
+    props.setModel(props.equipment_model);
+    props.setModification(props.equipment_modification);
+  }, []);
+
   return (
     <div className={styles.backdrop}>
       <div className={styles.modal}>
@@ -10,7 +16,7 @@ const Overlay = (props) => {
           id="equipment"
           name="equipment"
           className="form-control my-3"
-          defaultValue={""}
+          // defaultValue={""}
           onChange={(e) => props.setType(e.target.value)}
         >
           <option className="form-control my-3" value="" disabled>
@@ -46,6 +52,7 @@ const Overlay = (props) => {
           className="btn btn-success btn-block"
           onClick={() => {
             props.updateEquipment(props.equipment_id);
+            props.setShowUpdateModal(false);
           }}
         >
           Update
@@ -69,6 +76,10 @@ const UpdateEquipmentModal = (props) => {
       {createPortal(
         <Overlay
           equipment_id={props.equipment_id}
+          equipment_type={props.equipment_type}
+          equipment_model={props.equipment_model}
+          equipment_modification={props.equipment_modification}
+          // user_id={props.user_id}
           type={props.type}
           setType={props.setType}
           model={props.model}
