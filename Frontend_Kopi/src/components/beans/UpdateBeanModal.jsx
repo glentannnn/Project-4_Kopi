@@ -3,15 +3,15 @@ import { createPortal } from "react-dom";
 import styles from "./BeansModal.module.css";
 
 const Overlay = (props) => {
-  // useEffect(() => {
-  //   props.setCountry(props.bean_country);
-  //   props.setRegion(props.bean_region);
-  //   props.setType(props.bean_type);
-  //   props.setTaste(props.bean_taste);
-  //   props.setRoastdate(props.bean_roastdate);
-  //   props.setPrevgrindsize(props.bean_prevGrindSize);
-  //   props.setRemarks(props.bean_remarks);
-  // }, []);
+  useEffect(() => {
+    props.setCountry(props.bean_country);
+    props.setRegion(props.bean_region);
+    // props.setType(props.bean_type);
+    props.setTaste(props.bean_taste);
+    props.setRoastdate(props.bean_roastdate);
+    props.setPrevgrindsize(props.bean_prevgrindsize);
+    props.setRemarks(props.bean_remarks);
+  }, []);
 
   return (
     <div className={styles.backdrop}>
@@ -34,7 +34,7 @@ const Overlay = (props) => {
           id="beans"
           name="beans"
           className="form-control my-3"
-          defaultValue={""}
+          // defaultValue={""}
           onChange={(e) => props.setType(e.target.value)}
         >
           <option className="form-control my-3" value="" disabled>
@@ -80,7 +80,8 @@ const Overlay = (props) => {
         <button
           className="btn btn-success btn-block"
           onClick={() => {
-            props.updateBeans(props.bean_id); // here is the issue
+            props.updateBeans(props.bean_id);
+            props.setShowUpdateModal(false);
           }}
         >
           Update
@@ -106,7 +107,17 @@ const UpdateBeanModal = (props) => {
       {createPortal(
         <Overlay
           bean_id={props.bean_id}
-          beans={props.beans}
+          bean_country={props.bean_country}
+          bean_region={props.bean_region}
+          bean_type={props.bean_type}
+          bean_taste={props.bean_taste}
+          bean_roastdate={props.bean_roastdate}
+          bean_prevgrindsize={props.bean_prevgrindsize}
+          bean_remarks={props.bean_remarks}
+          user_id={props.user_id}
+          getBeans={props.getBeans}
+          deleteBeans={props.deleteBeans}
+          updateBeans={props.updateBeans}
           country={props.country}
           setCountry={props.setCountry}
           region={props.region}
@@ -121,7 +132,6 @@ const UpdateBeanModal = (props) => {
           setPrevgrindsize={props.setPrevgrindsize}
           remarks={props.remarks}
           setRemarks={props.setRemarks}
-          updateBeans={props.updateBeans}
           setShowUpdateModal={props.setShowUpdateModal}
         />,
         document.querySelector("#modal-root")

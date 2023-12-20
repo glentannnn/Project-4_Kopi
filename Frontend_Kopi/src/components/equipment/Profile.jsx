@@ -1,13 +1,13 @@
 import React, { useContext, useEffect, useState } from "react";
-import UserContext from "../context/user";
-import Equipment from "./equipment/Equipment";
+import UserContext from "../../context/user";
+import Equipment from "./Equipment";
 import {
   BrowserRouter as Router,
   Routes,
   Route,
   Navigate,
 } from "react-router-dom";
-import Navbar from "./Navbar";
+import Navbar from "../Navbar";
 
 const Profile = () => {
   const [name, setName] = useState("");
@@ -131,6 +131,9 @@ const Profile = () => {
   useEffect(() => {
     getName();
     getEquipment();
+    setType("");
+    setModel("");
+    setModification("");
   }, []);
 
   return (

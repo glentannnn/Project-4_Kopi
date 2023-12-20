@@ -8,7 +8,7 @@ import {
 import UserContext from "./context/user";
 import Registration from "./components/Registration";
 import Login from "./components/Login";
-import Profile from "./components/Profile";
+import Profile from "./components/equipment/Profile";
 import Beans from "./components/beans/Beans";
 import Users from "./components/users/Users";
 

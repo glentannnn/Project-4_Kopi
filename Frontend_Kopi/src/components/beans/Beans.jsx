@@ -3,7 +3,7 @@ import UserContext from "../../context/user";
 import Navbar from "../Navbar";
 import styles from "./Beans.module.css";
 import UpdateBeanModal from "./UpdateBeanModal";
-// import UpdateBeanModal from "./UpdateBeanModal";
+import BeansCard from "./BeansCard";
 
 const Beans = () => {
   const userCtx = useContext(UserContext);
@@ -16,7 +16,7 @@ const Beans = () => {
   const [roastdate, setRoastdate] = useState("");
   const [prevgrindsize, setPrevgrindsize] = useState("");
   const [remarks, setRemarks] = useState("");
-  console.log(beans);
+  // console.log(beans);
 
   const getBeans = async () => {
     try {
@@ -120,16 +120,19 @@ const Beans = () => {
     }
   };
 
-  // const bean_id = beans.map((item) => {
-  //   item.bean_id;
-  // });
-
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
   useEffect(() => {
     getBeans();
+    setCountry("");
+    setRegion("");
+    setType("");
+    setTaste("");
+    setRoastdate("");
+    setPrevgrindsize("");
+    setRemarks("");
   }, []);
 
   return (
@@ -140,7 +143,7 @@ const Beans = () => {
         <h5>Your Beans</h5>
       </div>
 
-      {showUpdateModal && (
+      {/* {showUpdateModal && (
         <UpdateBeanModal
           bean_id={bean_id}
           beans={beans}
@@ -161,48 +164,39 @@ const Beans = () => {
           updateBeans={updateBeans}
           setShowUpdateModal={setShowUpdateModal}
         />
-      )}
+      )} */}
 
       {beans.map((item) => {
         return (
-          <div key={item.bean_id} className={`${styles.beans}`}>
-            <div className={`${styles.beansCard}`}>
-              <div className={`${styles.beansDetail}`}>
-                Country: {item.bean_country}
-              </div>
-              <div className={`${styles.beansDetail}`}>
-                Region: {item.bean_region}
-              </div>
-              <div className={`${styles.beansDetail}`}>
-                Type: {item.bean_type}
-              </div>
-              <div className={`${styles.beansDetail}`}>
-                Taste: {item.bean_taste}
-              </div>
-              <div className={`${styles.beansDetail}`}>
-                Roast Date: {item.bean_roastdate}
-              </div>
-              <div className={`${styles.beansDetail}`}>
-                Prev Grind Size: {item.bean_prevgrindsize}
-              </div>
-              <div className={`${styles.beansDetail}`}>
-                Remarks: {item.bean_remarks}
-              </div>
-
-              <button
-                className="btn btn-success btn-block my-2"
-                onClick={() => setShowUpdateModal(true)}
-              >
-                Update
-              </button>
-              <button
-                className="btn btn-success btn-block my-2"
-                onClick={() => deleteBeans(item.bean_id)}
-              >
-                Delete
-              </button>
-            </div>
-          </div>
+          <BeansCard
+            key={item.bean_id}
+            bean_id={item.bean_id}
+            bean_country={item.bean_country}
+            bean_region={item.bean_region}
+            bean_type={item.bean_type}
+            bean_taste={item.bean_taste}
+            bean_roastdate={item.bean_roastdate}
+            bean_prevgrindsize={item.bean_prevgrindsize}
+            bean_remarks={item.bean_remarks}
+            user_id={item.user_id}
+            getBeans={getBeans}
+            deleteBeans={deleteBeans}
+            updateBeans={updateBeans}
+            country={country}
+            setCountry={setCountry}
+            region={region}
+            setRegion={setRegion}
+            type={type}
+            setType={setType}
+            taste={taste}
+            setTaste={setTaste}
+            roastdate={roastdate}
+            setRoastdate={setRoastdate}
+            prevgrindsize={prevgrindsize}
+            setPrevgrindsize={setPrevgrindsize}
+            remarks={remarks}
+            setRemarks={setRemarks}
+          />
         );
       })}
 
