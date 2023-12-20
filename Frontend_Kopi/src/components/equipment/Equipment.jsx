@@ -8,14 +8,13 @@ const Equipment = (props) => {
   const [showUpdateModal, setShowUpdateModal] = useState(false);
 
   return (
-    <div>
+    <div className={`${styles.equipment}`}>
       {showUpdateModal && (
         <UpdateEquipmentModal
           equipment_id={props.equipment_id}
           equipment_type={props.equipment_type}
           equipment_model={props.equipment_model}
           equipment_modification={props.equipment_modification}
-          // user_id={props.user_id}
           type={props.type}
           setType={props.setType}
           model={props.model}
@@ -27,7 +26,7 @@ const Equipment = (props) => {
         />
       )}
 
-      <div className={`${styles.equipment}`}>
+      <div>
         <div className={`${styles.equipmentCard}`}>
           {/* <div className={`${styles.equipment-detail}`}></div> */}
           <div className={`${styles.equipmentDetail}`}>

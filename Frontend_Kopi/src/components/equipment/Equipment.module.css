@@ -1,6 +1,8 @@
 .equipment {
   display: flex;
   flex-direction: row;
+  width: 310px;
+  flex-wrap: wrap;
 }
 
 .equipmentCard {

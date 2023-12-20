@@ -15,7 +15,7 @@ const Overlay = (props) => {
         <select
           id="equipment"
           name="equipment"
-          className="form-control my-3"
+          className={styles.modalInput}
           // defaultValue={""}
           onChange={(e) => props.setType(e.target.value)}
         >
@@ -36,35 +36,36 @@ const Overlay = (props) => {
         <input
           type="text"
           placeholder="Input changes to model here"
-          className="form-control my-3"
+          className={styles.modalInput}
           value={props.model}
           onChange={(e) => props.setModel(e.target.value)}
         />
         <input
           type="text"
           placeholder="Input changes to modification here"
-          className="form-control my-3"
+          className={styles.modalInput}
           value={props.modification}
           onChange={(e) => props.setModification(e.target.value)}
         />
-
-        <button
-          className="btn btn-success btn-block"
-          onClick={() => {
-            props.updateEquipment(props.equipment_id);
-            props.setShowUpdateModal(false);
-          }}
-        >
-          Update
-        </button>
-        <button
-          className="btn btn-success btn-block"
-          onClick={() => {
-            props.setShowUpdateModal(false);
-          }}
-        >
-          Cancel
-        </button>
+        <div className={styles.updateButtonContainer}>
+          <button
+            className={styles.updateButton}
+            onClick={() => {
+              props.updateEquipment(props.equipment_id);
+              props.setShowUpdateModal(false);
+            }}
+          >
+            Update
+          </button>
+          <button
+            className={styles.updateButton}
+            onClick={() => {
+              props.setShowUpdateModal(false);
+            }}
+          >
+            Cancel
+          </button>
+        </div>
       </div>
     </div>
   );

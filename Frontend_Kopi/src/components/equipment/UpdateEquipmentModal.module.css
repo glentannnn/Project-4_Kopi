@@ -17,4 +17,37 @@
   width: 80%;
   z-index: 100;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+}
+
+.updateButtonContainer {
+  display: flex;
+  margin: 10px 20px;
+}
+
+.updateButton {
+  margin: 10px 20px;
+  width: 200px;
+  height: 35px;
+  border: 0.5px solid rgb(163, 159, 159);
+  border-radius: 15px;
+  background-color: #a4b83f;
+  color: whitesmoke;
+  box-shadow: 1px 1px 1px 1px grey;
+}
+
+.updateButton:hover {
+  opacity: 0.8;
+}
+
+.modalInput {
+  height: 38px;
+  width: 600px;
+  margin: 10px;
+  border: 0.5px solid rgb(163, 159, 159);
+  border-radius: 10px;
 }
