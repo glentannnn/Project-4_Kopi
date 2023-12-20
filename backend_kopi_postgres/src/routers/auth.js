@@ -9,6 +9,7 @@ const {
   refresh,
   deleteUser,
   verify,
+  updateUser,
 } = require("../controllers/auth");
 
 const { auth, authAdmin } = require("../middleware/auth");
@@ -19,6 +20,7 @@ router.put("/register", register);
 router.post("/login", login);
 router.post("/refresh", refresh);
 router.delete("/users/delete/:id", authAdmin, deleteUser);
+router.post("/users/update/:id", authAdmin, updateUser);
 router.get("/verify", auth, verify);
 
 module.exports = router;

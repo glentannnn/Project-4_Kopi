@@ -16,7 +16,7 @@ const Profile = () => {
   const [model, setModel] = useState("");
   const [modification, setModification] = useState("");
   const userCtx = useContext(UserContext);
-  console.log(equipment);
+  // console.log(equipment);
   // console.log(userCtx.id);
 
   const getName = async () => {

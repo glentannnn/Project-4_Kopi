@@ -1,0 +1,24 @@
+.nav {
+  background-color: #ad7e0e;
+  padding-top: 10px;
+}
+
+.navHeader {
+  display: flex;
+  justify-content: center;
+  margin: 15px 0;
+  color: whitesmoke;
+}
+
+.navButtonContainer {
+  display: flex;
+  justify-content: space-around;
+}
+
+.navButton {
+  background-color: #ad7e0e;
+  color: whitesmoke;
+  width: 100%;
+  margin: 20px;
+  border-radius: 20px;
+}

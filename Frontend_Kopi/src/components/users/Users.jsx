@@ -1,12 +1,12 @@
 import React, { useState, useContext, useEffect } from "react";
 import UserContext from "../../context/user";
 import Navbar from "../Navbar";
+import UsersCard from "./UsersCard";
 import styles from "./Users.module.css";
-// import UpdateUserModal from "./UpdateUserModal";
 
 const Users = () => {
   const userCtx = useContext(UserContext);
-  const [showUpdateModal, setShowUpdateModal] = useState(false);
+  // const [showUpdateModal, setShowUpdateModal] = useState(false);
   const [users, setUsers] = useState([]);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -44,6 +44,7 @@ const Users = () => {
       setName("");
       setEmail("");
       setPassword("");
+      setRole("");
     } catch (error) {
       console.log(error.message);
     }
@@ -92,6 +93,10 @@ const Users = () => {
 
   useEffect(() => {
     getUsers();
+    setName("");
+    setEmail("");
+    setPassword("");
+    setRole("");
   }, []);
 
   return (
@@ -104,32 +109,25 @@ const Users = () => {
 
       {users.map((item) => {
         return (
-          <div key={item.user_id} className={`${styles.users}`}>
-            <div className={`${styles.usersCard}`}>
-              <div className={`${styles.usersDetail}`}>
-                Name: {item.user_name}
-              </div>
-              <div className={`${styles.usersDetail}`}>
-                Email: {item.user_email}
-              </div>
-              <div className={`${styles.usersDetail}`}>
-                Role: {item.user_role}
-              </div>
-
-              {/* <button
-              className="btn btn-success btn-block my-2"
-              onClick={() => setShowUpdateModal(true)}
-            >
-              Update
-            </button> */}
-              <button
-                className="btn btn-success btn-block my-2"
-                onClick={() => deleteUser(item.user_id)}
-              >
-                Delete
-              </button>
-            </div>
-          </div>
+          <UsersCard
+            key={item.user_id}
+            user_id={item.user_id}
+            user_name={item.user_name}
+            user_email={item.user_email}
+            user_password={item.user_password}
+            user_role={item.user_role}
+            getUsers={getUsers}
+            deleteUser={deleteUser}
+            updateUser={updateUser}
+            name={name}
+            setName={setName}
+            email={email}
+            setEmail={setEmail}
+            password={password}
+            setPassword={setPassword}
+            role={role}
+            setRole={setRole}
+          />
         );
       })}
 

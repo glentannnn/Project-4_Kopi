@@ -31,11 +31,11 @@ const Login = (props) => {
       userCtx.setPassword(decoded.password);
       userCtx.setRole(decoded.role);
 
-      localStorage.setItem("accessToken", data.accessToken);
-      //   props.setShowLogin(false);
+      // localStorage.setItem("accessToken", data.accessToken);
       props.setAuthentication(true);
     } catch (error) {
       console.log(error.message);
+      alert("Incorrect password or email. Please try again.");
     }
   };
 

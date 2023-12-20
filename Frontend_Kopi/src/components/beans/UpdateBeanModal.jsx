@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { createPortal } from "react-dom";
-import styles from "./BeansModal.module.css";
+import styles from "./UpdateBeanModal.module.css";
 
 const Overlay = (props) => {
   useEffect(() => {
@@ -86,7 +86,6 @@ const Overlay = (props) => {
         >
           Update
         </button>
-
         <button
           className="btn btn-success btn-block"
           onClick={() => {
@@ -101,7 +100,7 @@ const Overlay = (props) => {
 };
 
 const UpdateBeanModal = (props) => {
-  console.log(props.bean_id);
+  // console.log(props.bean_id);
   return (
     <>
       {createPortal(

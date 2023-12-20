@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { createPortal } from "react-dom";
-import styles from "./EquipmentModal.module.css";
+import styles from "./UpdateEquipmentModal.module.css";
 
 const Overlay = (props) => {
   useEffect(() => {

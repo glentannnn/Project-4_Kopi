@@ -105,23 +105,6 @@ const login = async (req, res) => {
       user.rows[0].user_role
     );
     res.json({ accessToken, refreshToken });
-
-    /* const claims = {
-      email: email,
-      user: user.rows[0].user_id,
-      role: role,
-    };
-
-    const access = jwt.sign(claims, process.env.ACCESS_SECRET, {
-      expiresIn: "30m",
-      jwtid: uuidv4(),
-    });
-
-    const refresh = jwt.sign(claims, process.env.REFRESH_SECRET, {
-      expiresIn: "30d",
-      jwtid: uuidv4(),
-    });
-    res.json({ access, refresh }); */
   } catch (error) {
     console.log(error.message);
     res.status(400).json({ status: "error", msg: "server error" });
@@ -162,6 +145,30 @@ const deleteUser = async (req, res) => {
   }
 };
 
+const updateUser = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { name, email, password, role } = req.body;
+
+    const user = await pool.query("SELECT * FROM users WHERE user_email = $1", [
+      email,
+    ]);
+
+    const hash = await bcrypt.hash(password, 12);
+
+    const updatedUser = await pool.query(
+      "UPDATE users SET user_name = $1, user_email = $2, user_password = $3, user_role = $4 WHERE user_id = $5",
+      [name, email, hash, role, id]
+    );
+    res
+      .status(200)
+      .json({ status: "success", msg: "user updated successfully" });
+  } catch (error) {
+    console.log(error.message);
+    res.status(400).json({ status: "error", msg: "server error" });
+  }
+};
+
 const verify = async (req, res) => {
   try {
     res.json(true);
@@ -178,5 +185,6 @@ module.exports = {
   login,
   refresh,
   deleteUser,
+  updateUser,
   verify,
 };

@@ -1,13 +1,12 @@
 import React, { useContext, useState, useEffect } from "react";
 import UserContext from "../../context/user";
 import Navbar from "../Navbar";
-import styles from "./Beans.module.css";
-import UpdateBeanModal from "./UpdateBeanModal";
 import BeansCard from "./BeansCard";
+import styles from "./Beans.module.css";
 
 const Beans = () => {
   const userCtx = useContext(UserContext);
-  const [showUpdateModal, setShowUpdateModal] = useState(false);
+  // const [showUpdateModal, setShowUpdateModal] = useState(false);
   const [beans, setBeans] = useState([]);
   const [country, setCountry] = useState("");
   const [region, setRegion] = useState("");

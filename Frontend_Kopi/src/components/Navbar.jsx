@@ -7,21 +7,42 @@ const Navbar = () => {
   const userCtx = useContext(UserContext);
 
   return (
-    <nav>
-      <ul>
-        <li>
-          <NavLink to="/profile">Profile</NavLink>
-        </li>
-        <li>
-          <NavLink to="/beans">Beans</NavLink>
-        </li>
+    // <nav>
+    //   <ul>
+    //     <li>
+    //       <NavLink to="/profile">Profile</NavLink>
+    //     </li>
+    //     <li>
+    //       <NavLink to="/beans">Beans</NavLink>
+    //     </li>
+    //     {userCtx.role === "ADMIN" ? (
+    //       <li>
+    //         <NavLink to="/users">Users</NavLink>
+    //       </li>
+    //     ) : null}
+    //   </ul>
+    // </nav>
+    <div className={styles.nav}>
+      <div className={styles.navHeader}>
+        <h3>Kopi</h3>
+      </div>
+      <hr></hr>
+      <nav className={styles.navButtonContainer}>
+        <NavLink to="/profile">
+          <button className={styles.navButton}>Profile</button>
+        </NavLink>
+
+        <NavLink to="/beans">
+          <button className={styles.navButton}>Beans</button>
+        </NavLink>
+
         {userCtx.role === "ADMIN" ? (
-          <li>
-            <NavLink to="/users">Users</NavLink>
-          </li>
+          <NavLink to="/users">
+            <button className={styles.navButton}>Users</button>
+          </NavLink>
         ) : null}
-      </ul>
-    </nav>
+      </nav>
+    </div>
   );
 };
 
