@@ -7,21 +7,6 @@ const Navbar = () => {
   const userCtx = useContext(UserContext);
 
   return (
-    // <nav>
-    //   <ul>
-    //     <li>
-    //       <NavLink to="/profile">Profile</NavLink>
-    //     </li>
-    //     <li>
-    //       <NavLink to="/beans">Beans</NavLink>
-    //     </li>
-    //     {userCtx.role === "ADMIN" ? (
-    //       <li>
-    //         <NavLink to="/users">Users</NavLink>
-    //       </li>
-    //     ) : null}
-    //   </ul>
-    // </nav>
     <div className={styles.nav}>
       <div className={styles.navHeader}>
         <h3>Kopi</h3>

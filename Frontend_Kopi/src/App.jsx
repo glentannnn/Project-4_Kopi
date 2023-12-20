@@ -23,28 +23,9 @@ function App() {
   const [password, setPassword] = useState("");
   const [role, setRole] = useState("");
 
-  // const checkAuthenticated = async () => {
-  //   try {
-  //     const res = await fetch(import.meta.env.VITE_SERVER + "/auth/verify", {
-  //       mathod: "GET",
-  //       headers: {
-  //         Authentication: "Bearer " + userCtx.accessToken,
-  //       },
-  //     });
-  //     const data = await res.json();
-  //     data === true ? setIsAuthenticated(true) : setIsAuthenticated(false);
-  //   } catch (error) {
-  //     console.log(error.message);
-  //   }
-  // };
-
   const setAuthentication = (boolean) => {
     setIsAuthenticated(boolean);
   };
-
-  // useEffect(() => {
-  //   checkAuthenticated();
-  // }, []);
 
   return (
     <>
@@ -101,20 +82,6 @@ function App() {
             />
           </Routes>
         </Router>
-
-        {/* {!isAuthenticated && showLogin && (
-          <Login
-            setShowLogin={setShowLogin}
-            setAuthentication={setAuthentication}
-          />
-        )}
-        {!isAuthenticated && !showLogin && (
-          <Registration
-            setShowLogin={setShowLogin}
-            setAuthentication={setAuthentication}
-          />
-        )}
-        {isAuthenticated && <Profile setAuthentication={setAuthentication} />} */}
       </UserContext.Provider>
     </>
   );

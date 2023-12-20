@@ -1,16 +1,18 @@
 @import url("https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Dosis:wght@200;300;400&display=swap");
 
 * {
   box-sizing: border-box;
 }
 
 html {
-  font-family: "Times New Roman", Times, serif, "Oxygen", sans-serif;
+  font-family: "Dosis", sans-serif;
 }
 
 body {
   margin: 0;
   background-color: whitesmoke;
+  font-family: "Dosis", sans-serif;
 }
 
 .centered {

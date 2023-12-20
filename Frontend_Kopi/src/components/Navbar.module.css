@@ -1,13 +1,19 @@
 .nav {
-  background-color: #ad7e0e;
-  padding-top: 10px;
+  /* background-color: #ad7e0e; */
+  background-color: #bca161;
+  padding: 10px 0;
+}
+
+.nav hr {
+  margin: 0 0 5px 0;
 }
 
 .navHeader {
   display: flex;
   justify-content: center;
-  margin: 15px 0;
+  margin: 10px 0;
   color: whitesmoke;
+  font-size: x-large;
 }
 
 .navButtonContainer {
@@ -16,9 +22,16 @@
 }
 
 .navButton {
-  background-color: #ad7e0e;
+  /* background-color: #ad7e0e; */
+  background-color: #bca161;
   color: whitesmoke;
-  width: 100%;
-  margin: 20px;
-  border-radius: 20px;
+  width: 20vw;
+  height: 5vh;
+  margin: 5px;
+  border: 0px;
+  font-size: large;
+}
+
+.navButton:hover {
+  opacity: 0.5;
 }

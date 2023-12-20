@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import UserContext from "../context/user";
 import { jwtDecode } from "jwt-decode";
 import styles from "./Login.module.css";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 const Login = (props) => {
   const userCtx = useContext(UserContext);
@@ -45,36 +45,37 @@ const Login = (props) => {
 
   return (
     <>
-      <div className="text-center my-5 mx-5">
+      <div /*className="text-center my-5 mx-5"*/ className={styles.login}>
         <h3> Welcome to the Kopi App </h3>
 
         <input
           type="email"
           placeholder="email"
-          className="form-control my-3"
+          // className="form-control my-3"
+          className={styles.loginInput}
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
-
         <input
           type="password"
           placeholder="password"
-          className="form-control my-3"
+          // className="form-control my-3"
+          className={styles.loginInput}
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
 
         <button
-          className="btn btn-success btn-block"
+          // className="btn btn-success btn-block"
+          className={styles.loginButton}
           onClick={() => {
             handleLogin();
           }}
         >
           Enter
         </button>
-        <br></br>
-        <div>
-          <Link to="/registration">New to Kopi App? Register here.</Link>
+        <div className={styles.toRegistration}>
+          <NavLink to="/registration">New to Kopi App? Register here.</NavLink>
         </div>
       </div>
     </>

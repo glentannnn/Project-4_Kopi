@@ -6,7 +6,6 @@ import styles from "./Beans.module.css";
 
 const Beans = () => {
   const userCtx = useContext(UserContext);
-  // const [showUpdateModal, setShowUpdateModal] = useState(false);
   const [beans, setBeans] = useState([]);
   const [country, setCountry] = useState("");
   const [region, setRegion] = useState("");
@@ -141,29 +140,6 @@ const Beans = () => {
       <div className="text-center my-5 mx-5">
         <h5>Your Beans</h5>
       </div>
-
-      {/* {showUpdateModal && (
-        <UpdateBeanModal
-          bean_id={bean_id}
-          beans={beans}
-          country={country}
-          setCountry={setCountry}
-          region={region}
-          setRegion={setRegion}
-          type={type}
-          setType={setType}
-          taste={taste}
-          setTaste={setTaste}
-          roastdate={roastdate}
-          setRoastdate={setRoastdate}
-          prevgrindsize={prevgrindsize}
-          setPrevgrindsize={setPrevgrindsize}
-          remarks={remarks}
-          setRemarks={setRemarks}
-          updateBeans={updateBeans}
-          setShowUpdateModal={setShowUpdateModal}
-        />
-      )} */}
 
       {beans.map((item) => {
         return (
