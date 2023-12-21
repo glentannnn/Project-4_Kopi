@@ -19,21 +19,24 @@ const Overlay = (props) => {
         <input
           type="text"
           placeholder="Country"
-          className="form-control my-3"
+          // className="form-control my-3"
+          className={styles.modalInput}
           value={props.country}
           onChange={(e) => props.setCountry(e.target.value)}
         ></input>
         <input
           type="text"
           placeholder="Region"
-          className="form-control my-3"
+          // className="form-control my-3"
+          className={styles.modalInput}
           value={props.region}
           onChange={(e) => props.setRegion(e.target.value)}
         ></input>
         <select
           id="beans"
           name="beans"
-          className="form-control my-3"
+          // className="form-control my-3"
+          className={styles.modalInput}
           // defaultValue={""}
           onChange={(e) => props.setType(e.target.value)}
         >
@@ -51,49 +54,57 @@ const Overlay = (props) => {
         <input
           type="text"
           placeholder="Tasting Notes"
-          className="form-control my-3"
+          // className="form-control my-3"
+          className={styles.modalInput}
           value={props.taste}
           onChange={(e) => props.setTaste(e.target.value)}
         ></input>
         <input
           type="date"
           placeholder="Roast Date"
-          className="form-control my-3"
+          // className="form-control my-3"
+          className={styles.modalInput}
           value={props.roastdate}
           onChange={(e) => props.setRoastdate(e.target.value)}
         ></input>
         <input
           type="text"
           placeholder="Previous Grind Size"
-          className="form-control my-3"
+          // className="form-control my-3"
+          className={styles.modalInput}
           value={props.prevgrindsize}
           onChange={(e) => props.setPrevgrindsize(e.target.value)}
         ></input>
         <input
           type="text"
           placeholder="Remarks"
-          className="form-control my-3"
+          // className="form-control my-3"
+          className={styles.modalInput}
           value={props.remarks}
           onChange={(e) => props.setRemarks(e.target.value)}
         ></input>
 
-        <button
-          className="btn btn-success btn-block"
-          onClick={() => {
-            props.updateBeans(props.bean_id);
-            props.setShowUpdateModal(false);
-          }}
-        >
-          Update
-        </button>
-        <button
-          className="btn btn-success btn-block"
-          onClick={() => {
-            props.setShowUpdateModal(false);
-          }}
-        >
-          Cancel
-        </button>
+        <div className={styles.updateButtonContainer}>
+          <button
+            // className="btn btn-success btn-block"
+            className={styles.updateButton}
+            onClick={() => {
+              props.updateBeans(props.bean_id);
+              props.setShowUpdateModal(false);
+            }}
+          >
+            Update
+          </button>
+          <button
+            // className="btn btn-success btn-block"
+            className={styles.updateButton}
+            onClick={() => {
+              props.setShowUpdateModal(false);
+            }}
+          >
+            Cancel
+          </button>
+        </div>
       </div>
     </div>
   );

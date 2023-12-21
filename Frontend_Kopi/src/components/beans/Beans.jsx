@@ -135,49 +135,52 @@ const Beans = () => {
   return (
     <>
       <Navbar></Navbar>
+      <div className={styles.container}>
+        <div className={styles.yourBeans}>
+          <h5>Your Beans</h5>
+        </div>
 
-      <div className="text-center my-5 mx-5">
-        <h5>Your Beans</h5>
-      </div>
+        <div className={styles.beansDisplay}>
+          {beans.map((item) => {
+            return (
+              <BeansCard
+                key={item.bean_id}
+                bean_id={item.bean_id}
+                bean_country={item.bean_country}
+                bean_region={item.bean_region}
+                bean_type={item.bean_type}
+                bean_taste={item.bean_taste}
+                bean_roastdate={item.bean_roastdate}
+                bean_prevgrindsize={item.bean_prevgrindsize}
+                bean_remarks={item.bean_remarks}
+                user_id={item.user_id}
+                getBeans={getBeans}
+                deleteBeans={deleteBeans}
+                updateBeans={updateBeans}
+                country={country}
+                setCountry={setCountry}
+                region={region}
+                setRegion={setRegion}
+                type={type}
+                setType={setType}
+                taste={taste}
+                setTaste={setTaste}
+                roastdate={roastdate}
+                setRoastdate={setRoastdate}
+                prevgrindsize={prevgrindsize}
+                setPrevgrindsize={setPrevgrindsize}
+                remarks={remarks}
+                setRemarks={setRemarks}
+              />
+            );
+          })}
+        </div>
 
-      {beans.map((item) => {
-        return (
-          <BeansCard
-            key={item.bean_id}
-            bean_id={item.bean_id}
-            bean_country={item.bean_country}
-            bean_region={item.bean_region}
-            bean_type={item.bean_type}
-            bean_taste={item.bean_taste}
-            bean_roastdate={item.bean_roastdate}
-            bean_prevgrindsize={item.bean_prevgrindsize}
-            bean_remarks={item.bean_remarks}
-            user_id={item.user_id}
-            getBeans={getBeans}
-            deleteBeans={deleteBeans}
-            updateBeans={updateBeans}
-            country={country}
-            setCountry={setCountry}
-            region={region}
-            setRegion={setRegion}
-            type={type}
-            setType={setType}
-            taste={taste}
-            setTaste={setTaste}
-            roastdate={roastdate}
-            setRoastdate={setRoastdate}
-            prevgrindsize={prevgrindsize}
-            setPrevgrindsize={setPrevgrindsize}
-            remarks={remarks}
-            setRemarks={setRemarks}
-          />
-        );
-      })}
+        <div className={styles.addBean}>
+          <h5>Add Bean</h5>
+        </div>
 
-      <div className="text-center my-5 mx-5">
-        <h5>Add Bean</h5>
-
-        <div>
+        <div className="text-center">
           <input
             type="text"
             placeholder="Country"

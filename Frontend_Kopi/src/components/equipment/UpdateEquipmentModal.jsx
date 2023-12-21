@@ -36,6 +36,7 @@ const Overlay = (props) => {
         <input
           type="text"
           placeholder="Input changes to model here"
+          // className="form-control my-3"
           className={styles.modalInput}
           value={props.model}
           onChange={(e) => props.setModel(e.target.value)}
@@ -43,12 +44,15 @@ const Overlay = (props) => {
         <input
           type="text"
           placeholder="Input changes to modification here"
+          // className="form-control my-3"
           className={styles.modalInput}
           value={props.modification}
           onChange={(e) => props.setModification(e.target.value)}
         />
+
         <div className={styles.updateButtonContainer}>
           <button
+            // className="btn btn-success btn-block"
             className={styles.updateButton}
             onClick={() => {
               props.updateEquipment(props.equipment_id);
@@ -58,6 +62,7 @@ const Overlay = (props) => {
             Update
           </button>
           <button
+            // className="btn btn-success btn-block"
             className={styles.updateButton}
             onClick={() => {
               props.setShowUpdateModal(false);

@@ -1,4 +1,4 @@
-.beans {
+/* .beans {
   display: flex;
   flex-direction: row;
 }
@@ -20,7 +20,7 @@
   border-radius: 5px;
   padding: 5px;
   margin: 5px;
-}
+} */
 
 /* .addingBeans {
   border: 0.5px solid grey;
@@ -31,3 +31,32 @@
   align-items: center;
   width: 500px;
 } */
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: left;
+  margin: 30px 30px 50px 30px;
+}
+
+.container h5 {
+  font-weight: 600;
+}
+
+.yourBeans {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.beansDisplay {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+.addBean {
+  text-align: center;
+  margin-top: 30px;
+}
