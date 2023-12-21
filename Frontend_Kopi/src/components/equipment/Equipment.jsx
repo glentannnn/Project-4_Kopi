@@ -30,13 +30,13 @@ const Equipment = (props) => {
         <div className={`${styles.equipmentCard}`}>
           {/* <div className={`${styles.equipment-detail}`}></div> */}
           <div className={`${styles.equipmentDetail}`}>
-            Type: {props.equipment_type}
+            <span>Type:</span> {props.equipment_type}
           </div>
           <div className={`${styles.equipmentDetail}`}>
-            Model: {props.equipment_model}
+            <span>Model:</span> {props.equipment_model}
           </div>
           <div className={`${styles.equipmentDetail}`}>
-            Modification: {props.equipment_modification}
+            <span>Modification:</span> {props.equipment_modification}
           </div>
 
           <button

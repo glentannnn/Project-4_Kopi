@@ -14,7 +14,6 @@ const Beans = () => {
   const [roastdate, setRoastdate] = useState("");
   const [prevgrindsize, setPrevgrindsize] = useState("");
   const [remarks, setRemarks] = useState("");
-  // console.log(beans);
 
   const getBeans = async () => {
     try {
@@ -177,6 +176,7 @@ const Beans = () => {
 
       <div className="text-center my-5 mx-5">
         <h5>Add Bean</h5>
+
         <div>
           <input
             type="text"
@@ -219,6 +219,7 @@ const Beans = () => {
           ></input>
           <input
             type="date"
+            // pattern="\d{4}-\d{2}-\d{2}"
             placeholder="Roast Date"
             className="form-control my-3"
             value={roastdate}

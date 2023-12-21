@@ -11,6 +11,7 @@
   padding: 40px 110px;
   background-color: #bca161;
 }
+
 .login h3 {
   margin-bottom: 15px;
   color: whitesmoke;
@@ -27,7 +28,7 @@
 .loginButton {
   background-color: #a4b83f;
   color: whitesmoke;
-  border: 0.3px solid rgb(208, 204, 204);
+  border: 0.3px solid #a4b83f;
   border-radius: 10px;
   width: 100px;
   height: 35px;
@@ -36,7 +37,7 @@
 }
 
 .loginButton:hover {
-  opacity: 0.8;
+  opacity: 0.5;
 }
 
 .toRegistration {

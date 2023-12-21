@@ -1,4 +1,5 @@
 import React, { useContext, useState } from "react";
+import { compareAsc, format } from "date-fns";
 import UserContext from "../../context/user";
 import UpdateBeanModal from "./UpdateBeanModal";
 import styles from "./BeansCard.module.css";
@@ -6,6 +7,11 @@ import styles from "./BeansCard.module.css";
 const BeansCard = (props) => {
   const userCtx = useContext(UserContext);
   const [showUpdateModal, setShowUpdateModal] = useState(false);
+
+  const formattedDate = format(new Date(props.bean_roastdate), "dd-MMMM-Y");
+  const dateFormatter = (date) => {
+    format(new Date(date), "dd-MMMM-Y");
+  };
 
   return (
     <div>
@@ -43,23 +49,26 @@ const BeansCard = (props) => {
       <div /*key={item.bean_id}*/ className={`${styles.beans}`}>
         <div className={`${styles.beansCard}`}>
           <div className={`${styles.beansDetail}`}>
-            Country: {props.bean_country}
+            <span>Country:</span> {props.bean_country}
           </div>
           <div className={`${styles.beansDetail}`}>
-            Region: {props.bean_region}
-          </div>
-          <div className={`${styles.beansDetail}`}>Type: {props.bean_type}</div>
-          <div className={`${styles.beansDetail}`}>
-            Taste: {props.bean_taste}
+            <span>Region:</span> {props.bean_region}
           </div>
           <div className={`${styles.beansDetail}`}>
-            Roast Date: {props.bean_roastdate}
+            <span>Type:</span> {props.bean_type}
           </div>
           <div className={`${styles.beansDetail}`}>
-            Prev Grind Size: {props.bean_prevgrindsize}
+            <span>Taste:</span> {props.bean_taste}
           </div>
           <div className={`${styles.beansDetail}`}>
-            Remarks: {props.bean_remarks}
+            <span>Roast Date:</span> {formattedDate}
+            {/* Roast Date: {props.bean_roastdate} */}
+          </div>
+          <div className={`${styles.beansDetail}`}>
+            <span>Prev Grind Size:</span> {props.bean_prevgrindsize}
+          </div>
+          <div className={`${styles.beansDetail}`}>
+            <span>Remarks:</span> {props.bean_remarks}
           </div>
 
           <button
@@ -76,7 +85,6 @@ const BeansCard = (props) => {
           </button>
         </div>
       </div>
-      ;
     </div>
   );
 };

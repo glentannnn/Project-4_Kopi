@@ -1,13 +1,12 @@
 import React, { useContext, useState, useEffect } from "react";
-// import UserContext from "../context/user";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
+import styles from "./Registration.module.css";
 
 const Registration = (props) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [role, setRole] = useState("USER");
-  //  role by default should be user, unless changed by admin. Default admin will be created in the backend.
 
   const registerUser = async () => {
     try {
@@ -33,14 +32,21 @@ const Registration = (props) => {
     window.scrollTo(0, 0);
   }, []);
 
+  useEffect(() => {
+    setName("");
+    setEmail("");
+    setPassword("");
+  }, []);
+
   return (
     <>
-      <div className="text-center my-3 mx-5">
+      <div className={styles.registration}>
         <h3>Register for the Kopi App</h3>
 
         <input
           type="text"
           placeholder="name"
+          // className={styles.registrationInput}
           className="form-control my-3"
           value={name}
           onChange={(e) => setName(e.target.value)}
@@ -48,6 +54,7 @@ const Registration = (props) => {
         <input
           type="email"
           placeholder="email"
+          // className={styles.registrationInput}
           className="form-control my-3"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
@@ -55,13 +62,15 @@ const Registration = (props) => {
         <input
           type="text"
           placeholder="password"
+          // className={styles.registrationInput}
           className="form-control my-3"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
 
         <button
-          className="btn btn-success btn-block"
+          // className="btn btn-success btn-block"
+          className={styles.registrationButton}
           onClick={() => {
             registerUser();
           }}
@@ -70,7 +79,7 @@ const Registration = (props) => {
         </button>
         <br></br>
         <div>
-          <Link to="/login">Already a user? Go to login here.</Link>
+          <NavLink to="/login">Already a user? Go to login here.</NavLink>
           {/* <button
             className="btn btn-success btn-block my-2"
             onClick={() => props.setShowLogin(true)}

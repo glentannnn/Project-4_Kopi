@@ -24,6 +24,10 @@
   margin: 5px;
 }
 
+.equipmentDetail span {
+  font-weight: 600;
+}
+
 .addingEquipment {
   border: 0.5px solid grey;
   border-radius: 5px;

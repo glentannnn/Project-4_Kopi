@@ -1,6 +1,10 @@
 const pool = require("../db/db");
 // const { all } = require("../routers/beans");
 
+// const dateFormatter = (date) => {
+//   format(new Date(date), "dd-MMMM-Y");
+// };
+
 const getAllBeans = async (req, res) => {
   try {
     const beansList = await pool.query("SELECT * FROM beans");
@@ -19,6 +23,7 @@ const getAllUserBeans = async (req, res) => {
       [id]
     );
     res.status(200).json(beansList.rows);
+    console.log(beansList.rows);
   } catch (error) {
     console.log(error.message);
     res

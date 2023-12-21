@@ -22,6 +22,10 @@
   margin: 5px;
 }
 
+.beansDetail span {
+  font-weight: 600;
+}
+
 .addingBeans {
   border: 0.5px solid grey;
   border-radius: 5px;

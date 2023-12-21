@@ -13,7 +13,10 @@
   justify-content: center;
   margin: 10px 0;
   color: whitesmoke;
-  font-size: x-large;
+}
+
+.navHeader h3 {
+  font-weight: 700;
 }
 
 .navButtonContainer {
