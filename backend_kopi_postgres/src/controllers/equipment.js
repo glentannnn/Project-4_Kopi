@@ -17,6 +17,7 @@ const getAllUserEquipment = async (req, res) => {
       "SELECT * FROM equipment WHERE user_id = $1",
       [id]
     );
+    // console.log(equipmentList.rows);
     res.status(200).json(equipmentList.rows);
   } catch (error) {
     console.log(error.message);

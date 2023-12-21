@@ -37,11 +37,11 @@ const Overlay = (props) => {
           name="beans"
           // className="form-control my-3"
           className={styles.modalInput}
-          // defaultValue={""}
+          defaultValue={""}
           onChange={(e) => props.setType(e.target.value)}
         >
           <option value="" disabled>
-            Type
+            Beans Type
           </option>
           {/* loop below, put this to later after functionality completed. Also attempt to reformat the words to nicer looking words from backend */}
           <option value="ESPRESSO">Espresso</option>
@@ -60,6 +60,7 @@ const Overlay = (props) => {
           placeholder="Roast Date"
           // className="form-control my-3"
           className={styles.modalInput}
+          max={new Date().toISOString().split("T")[0]}
           value={props.roastdate}
           onChange={(e) => props.setRoastdate(e.target.value)}
         ></input>

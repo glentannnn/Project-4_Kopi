@@ -50,26 +50,30 @@ const BeansCard = (props) => {
       <div /*key={item.bean_id}*/ className={`${styles.beans}`}>
         <div className={`${styles.beansCard}`}>
           <div className={`${styles.beansDetail}`}>
-            <span>Country:</span> {props.bean_country}
+            <span className={styles.key}>Country:</span> {props.bean_country}
           </div>
           <div className={`${styles.beansDetail}`}>
-            <span>Region:</span> {props.bean_region}
+            <span className={styles.key}>Region:</span> {props.bean_region}
           </div>
           <div className={`${styles.beansDetail}`}>
-            <span>Type:</span> {props.bean_type}
+            <span className={styles.key}>Type: </span>
+            <span className={styles.beanType}>
+              {props.bean_type.toLowerCase()}
+            </span>
           </div>
           <div className={`${styles.beansDetail}`}>
-            <span>Taste:</span> {props.bean_taste}
+            <span className={styles.key}>Taste:</span> {props.bean_taste}
           </div>
           <div className={`${styles.beansDetail}`}>
-            <span>Roast Date:</span> {formattedDate}
+            <span className={styles.key}>Roast Date:</span> {formattedDate}
             {/* Roast Date: {props.bean_roastdate} */}
           </div>
           <div className={`${styles.beansDetail}`}>
-            <span>Prev Grind Size:</span> {props.bean_prevgrindsize}
+            <span className={styles.key}>Prev Grind Size:</span>{" "}
+            {props.bean_prevgrindsize}
           </div>
           <div className={`${styles.beansDetail}`}>
-            <span>Remarks:</span> {props.bean_remarks}
+            <span className={styles.key}>Remarks:</span> {props.bean_remarks}
           </div>
 
           <div className={styles.buttonContainer}>

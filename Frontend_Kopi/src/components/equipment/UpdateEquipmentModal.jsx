@@ -16,22 +16,16 @@ const Overlay = (props) => {
           id="equipment"
           name="equipment"
           className={styles.modalInput}
-          // defaultValue={""}
+          defaultValue={""}
           onChange={(e) => props.setType(e.target.value)}
         >
-          <option className="form-control my-3" value="" disabled>
-            Type
+          <option value="" disabled>
+            Equipment Type
           </option>
           {/* loop below, put this to later after functionality completed. Also attempt to reformat the words to nicer looking words from backend */}
-          <option className="form-control my-3" value="GRINDER">
-            Grinder
-          </option>
-          <option className="form-control my-3" value="ESPRESSOMACHINE">
-            Espresso Machine
-          </option>
-          <option className="form-control my-3" value="V60">
-            V60
-          </option>
+          <option value="GRINDER">Grinder</option>
+          <option value="ESPRESSOMACHINE">Espresso Machine</option>
+          <option value="V60">V60</option>
         </select>
         <input
           type="text"

@@ -204,7 +204,7 @@ const Beans = () => {
             onChange={(e) => setType(e.target.value)}
           >
             <option className="form-control my-3" value="" disabled>
-              Type
+              Bean Type
             </option>
             {/* loop below, put this to later after functionality completed. Also attempt to reformat the words to nicer looking words from backend */}
             <option className="form-control my-3" value="ESPRESSO">
@@ -226,6 +226,7 @@ const Beans = () => {
             // pattern="\d{4}-\d{2}-\d{2}"
             placeholder="Roast Date"
             className="form-control my-3"
+            max={new Date().toISOString().split("T")[0]}
             value={roastdate}
             onChange={(e) => setRoastdate(e.target.value)}
           ></input>

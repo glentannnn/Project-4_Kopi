@@ -23,7 +23,7 @@ const getAllUserBeans = async (req, res) => {
       [id]
     );
     res.status(200).json(beansList.rows);
-    console.log(beansList.rows);
+    // console.log(beansList.rows);
   } catch (error) {
     console.log(error.message);
     res

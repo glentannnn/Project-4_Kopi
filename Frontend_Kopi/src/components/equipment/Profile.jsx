@@ -1,12 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import UserContext from "../../context/user";
 import Equipment from "./Equipment";
-// import {
-//   BrowserRouter as Router,
-//   Routes,
-//   Route,
-//   Navigate,
-// } from "react-router-dom";
 import Navbar from "../Navbar";
 import styles from "./Profile.module.css";
 
@@ -17,8 +11,6 @@ const Profile = () => {
   const [model, setModel] = useState("");
   const [modification, setModification] = useState("");
   const userCtx = useContext(UserContext);
-  // console.log(equipment);
-  // console.log(userCtx.id);
 
   const getName = async () => {
     try {
@@ -54,7 +46,31 @@ const Profile = () => {
       );
       const data = await res.json();
       console.log(data);
-      setEquipment(data);
+
+      const modifiedData = data.map((item) => {
+        let transformedEquipmentType;
+        if (item.equipment_type === "GRINDER") {
+          transformedEquipmentType = "Grinder";
+        } else if (item.equipment_type === "ESPRESSOMACHINE") {
+          transformedEquipmentType = "Espresso Machine";
+        } else if (item.equipment_type === "TIMER") {
+          transformedEquipmentType = "Timer";
+        } else if (item.equipment_type === "TAMPER") {
+          transformedEquipmentType = "Tamper";
+        } else if (item.equipment_type === "LEVELLER") {
+          transformedEquipmentType = "Leveller";
+        } else if (item.equipment_type === "WDTTOOL") {
+          transformedEquipmentType = "WDT Tool";
+        } else if (item.equipment_type === "FRENCHPRESS") {
+          transformedEquipmentType = "French Press";
+        } else {
+          transformedEquipmentType = item.equipment_type;
+        }
+
+        return { ...item, equipment_type: transformedEquipmentType };
+      });
+      setEquipment(modifiedData);
+      // setEquipment(data);
     } catch (error) {
       console.log(error.message);
     }
@@ -75,6 +91,7 @@ const Profile = () => {
       );
 
       const data = await res.json();
+      console.log(data);
       getEquipment();
       setType("");
       setModel("");
@@ -131,7 +148,7 @@ const Profile = () => {
   useEffect(() => {
     getName();
     getEquipment();
-    setType("");
+    setType();
     setModel("");
     setModification("");
   }, []);
@@ -187,9 +204,14 @@ const Profile = () => {
             onChange={(e) => setType(e.target.value)}
           >
             <option className="form-control my-3" value="" disabled>
-              Type
+              Equipment Type
             </option>
             {/* loop below, put this to later after functionality completed. Also attempt to reformat the words to nicer looking words from backend */}
+            {/* {equipmentTypes.map((item) => {
+              <option className="form-control my-3" value={item.toUpperCase()}>
+                {item}
+              </option>;
+            })} */}
             <option className="form-control my-3" value="GRINDER">
               Grinder
             </option>
@@ -198,6 +220,21 @@ const Profile = () => {
             </option>
             <option className="form-control my-3" value="V60">
               V60
+            </option>
+            <option className="form-control my-3" value="TIMER">
+              Timer
+            </option>
+            <option className="form-control my-3" value="TAMPER">
+              Tamper
+            </option>
+            <option className="form-control my-3" value="LEVELLER">
+              Leveller
+            </option>
+            <option className="form-control my-3" value="WDTTOOL">
+              WDT Tool
+            </option>
+            <option className="form-control my-3" value="FRENCHPRESS">
+              French Press
             </option>
           </select>
 

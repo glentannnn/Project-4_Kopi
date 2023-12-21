@@ -22,8 +22,12 @@
   margin: 5px;
 }
 
-.beansDetail span {
+.key {
   font-weight: 600;
+}
+
+.beanType {
+  text-transform: capitalize;
 }
 
 .buttonContainer {
