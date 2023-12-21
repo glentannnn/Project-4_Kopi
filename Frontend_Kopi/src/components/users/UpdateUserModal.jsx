@@ -16,45 +16,46 @@ const Overlay = (props) => {
         <input
           type="text"
           placeholder="Name"
-          className="form-control my-3"
+          // className="form-control my-3"
+          className={styles.modalInput}
           value={props.name}
           onChange={(e) => props.setName(e.target.value)}
         ></input>
         <input
           type="text"
           placeholder="Email"
-          className="form-control my-3"
+          // className="form-control my-3"
+          className={styles.modalInput}
           value={props.email}
           onChange={(e) => props.setEmail(e.target.value)}
         ></input>
         <input
           type="text"
           placeholder="Password"
-          className="form-control my-3"
+          // className="form-control my-3"
+          className={styles.modalInput}
           value={props.password}
           onChange={(e) => props.setPassword(e.target.value)}
         ></input>
         <select
           id="role"
           name="role"
-          className="form-control my-3"
+          // className="form-control my-3"
+          className={styles.modalInput}
           defaultValue={""}
           onChange={(e) => props.setRole(e.target.value)}
         >
-          <option className="form-control my-3" value="" disabled>
+          <option value="" disabled>
             Role
           </option>
           {/* loop below, put this to later after functionality completed. Also attempt to reformat the words to nicer looking words from backend */}
-          <option className="form-control my-3" value="USER">
-            User
-          </option>
-          <option className="form-control my-3" value="ADMIN">
-            Admin
-          </option>
+          <option value="USER">User</option>
+          <option value="ADMIN">Admin</option>
         </select>
 
         <button
-          className="btn btn-success btn-block"
+          // className="btn btn-success btn-block"
+          className={styles.updateButton}
           onClick={() => {
             props.updateUser(props.user_id);
             props.setShowUpdateModal(false);
@@ -63,7 +64,8 @@ const Overlay = (props) => {
           Update
         </button>
         <button
-          className="btn btn-success btn-block"
+          // className="btn btn-success btn-block"
+          className={styles.updateButton}
           onClick={() => {
             props.setShowUpdateModal(false);
           }}

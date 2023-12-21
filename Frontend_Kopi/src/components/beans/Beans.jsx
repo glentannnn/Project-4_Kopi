@@ -135,6 +135,7 @@ const Beans = () => {
   return (
     <>
       <Navbar></Navbar>
+
       <div className={styles.container}>
         <div className={styles.yourBeans}>
           <h5>Your Beans</h5>
@@ -244,7 +245,8 @@ const Beans = () => {
           ></input>
 
           <button
-            className="btn btn-success btn-block"
+            // className="btn btn-success btn-block"
+            className={styles.addButton}
             onClick={() => {
               addBeans();
             }}

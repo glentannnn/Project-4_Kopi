@@ -1,33 +1,43 @@
-.users {
-  display: flex;
-  flex-direction: row;
-}
-
-.usersCard {
-  border: 0.5px solid grey;
-  border-radius: 5px;
+.container {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: left;
-  width: 300px;
-  padding: 10px 5px;
-  margin: 10px;
+  margin: 30px 30px 50px 30px;
 }
 
-.usersDetail {
-  border: 0.5px solid grey;
-  border-radius: 5px;
-  padding: 5px;
-  margin: 5px;
+.container h5 {
+  font-weight: 600;
 }
 
-/* .addingBeans {
-  border: 0.5px solid grey;
-  border-radius: 5px;
+.yourUsers {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.usersDisplay {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  flex-direction: row;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+.addUser {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.addButton {
+  margin: 10px 10px;
   width: 500px;
-} */
+  height: 35px;
+  border: 0.5px solid #a4b83f;
+  border-radius: 15px;
+  background-color: #a4b83f;
+  color: whitesmoke;
+  box-shadow: 1px 1px 1px 1px grey;
+}
+
+.addButton:hover {
+  opacity: 0.5;
+}

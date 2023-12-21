@@ -102,38 +102,41 @@ const Users = () => {
   return (
     <>
       <Navbar></Navbar>
+      <div className={styles.container}>
+        <div className={styles.yourUsers}>
+          <h5>Users List</h5>
+        </div>
 
-      <div className="text-center my-5 mx-5">
-        <h5>Users List</h5>
-      </div>
+        <div className={styles.usersDisplay}>
+          {users.map((item) => {
+            return (
+              <UsersCard
+                key={item.user_id}
+                user_id={item.user_id}
+                user_name={item.user_name}
+                user_email={item.user_email}
+                user_password={item.user_password}
+                user_role={item.user_role}
+                getUsers={getUsers}
+                deleteUser={deleteUser}
+                updateUser={updateUser}
+                name={name}
+                setName={setName}
+                email={email}
+                setEmail={setEmail}
+                password={password}
+                setPassword={setPassword}
+                role={role}
+                setRole={setRole}
+              />
+            );
+          })}
+        </div>
 
-      {users.map((item) => {
-        return (
-          <UsersCard
-            key={item.user_id}
-            user_id={item.user_id}
-            user_name={item.user_name}
-            user_email={item.user_email}
-            user_password={item.user_password}
-            user_role={item.user_role}
-            getUsers={getUsers}
-            deleteUser={deleteUser}
-            updateUser={updateUser}
-            name={name}
-            setName={setName}
-            email={email}
-            setEmail={setEmail}
-            password={password}
-            setPassword={setPassword}
-            role={role}
-            setRole={setRole}
-          />
-        );
-      })}
-
-      <div className="text-center my-5 mx-5">
-        <h5>Add User</h5>
-        <div>
+        <div className={styles.addUser}>
+          <h5>Add User</h5>
+        </div>
+        <div className="text-center">
           <input
             type="text"
             placeholder="Name"
@@ -176,7 +179,8 @@ const Users = () => {
           </select>
 
           <button
-            className="btn btn-success btn-block"
+            // className="btn btn-success btn-block"
+            className={styles.addButton}
             onClick={() => {
               addUser();
             }}

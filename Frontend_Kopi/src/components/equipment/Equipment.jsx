@@ -39,18 +39,22 @@ const Equipment = (props) => {
             <span>Modification:</span> {props.equipment_modification}
           </div>
 
-          <button
-            className="btn btn-success btn-block my-2"
-            onClick={() => setShowUpdateModal(true)}
-          >
-            Update
-          </button>
-          <button
-            className="btn btn-success btn-block my-2"
-            onClick={() => props.deleteEquipment(props.equipment_id)}
-          >
-            Delete
-          </button>
+          <div className={styles.buttonContainer}>
+            <button
+              // className="btn btn-success btn-block my-2"
+              className={styles.cardButton}
+              onClick={() => setShowUpdateModal(true)}
+            >
+              Update
+            </button>
+            <button
+              // className="btn btn-success btn-block my-2"
+              className={styles.cardButton}
+              onClick={() => props.deleteEquipment(props.equipment_id)}
+            >
+              Delete
+            </button>
+          </div>
         </div>
       </div>
     </div>

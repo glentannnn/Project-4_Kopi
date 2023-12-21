@@ -46,6 +46,7 @@ const BeansCard = (props) => {
           setShowUpdateModal={setShowUpdateModal}
         />
       )}
+
       <div /*key={item.bean_id}*/ className={`${styles.beans}`}>
         <div className={`${styles.beansCard}`}>
           <div className={`${styles.beansDetail}`}>
@@ -71,18 +72,22 @@ const BeansCard = (props) => {
             <span>Remarks:</span> {props.bean_remarks}
           </div>
 
-          <button
-            className="btn btn-success btn-block my-2"
-            onClick={() => setShowUpdateModal(true)}
-          >
-            Update
-          </button>
-          <button
-            className="btn btn-success btn-block my-2"
-            onClick={() => props.deleteBeans(props.bean_id)}
-          >
-            Delete
-          </button>
+          <div className={styles.buttonContainer}>
+            <button
+              // className="btn btn-success btn-block my-2"
+              className={styles.cardButton}
+              onClick={() => setShowUpdateModal(true)}
+            >
+              Update
+            </button>
+            <button
+              // className="btn btn-success btn-block my-2"
+              className={styles.cardButton}
+              onClick={() => props.deleteBeans(props.bean_id)}
+            >
+              Delete
+            </button>
+          </div>
         </div>
       </div>
     </div>

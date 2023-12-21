@@ -30,26 +30,35 @@ const UsersCard = (props) => {
           setShowUpdateModal={setShowUpdateModal}
         />
       )}
+
       <div /*key={item.user_id}*/ className={`${styles.users}`}>
         <div className={`${styles.usersCard}`}>
-          <div className={`${styles.usersDetail}`}>Name: {props.user_name}</div>
           <div className={`${styles.usersDetail}`}>
-            Email: {props.user_email}
+            <span>Name:</span> {props.user_name}
           </div>
-          <div className={`${styles.usersDetail}`}>Role: {props.user_role}</div>
+          <div className={`${styles.usersDetail}`}>
+            <span>Email:</span> {props.user_email}
+          </div>
+          <div className={`${styles.usersDetail}`}>
+            <span>Role:</span> {props.user_role}
+          </div>
 
-          <button
-            className="btn btn-success btn-block my-2"
-            onClick={() => setShowUpdateModal(true)}
-          >
-            Update
-          </button>
-          <button
-            className="btn btn-success btn-block my-2"
-            onClick={() => props.deleteUser(props.user_id)}
-          >
-            Delete
-          </button>
+          <div className={styles.buttonContainer}>
+            <button
+              // className="btn btn-success btn-block my-2"
+              className={styles.cardButton}
+              onClick={() => setShowUpdateModal(true)}
+            >
+              Update
+            </button>
+            <button
+              // className="btn btn-success btn-block my-2"
+              className={styles.cardButton}
+              onClick={() => props.deleteUser(props.user_id)}
+            >
+              Delete
+            </button>
+          </div>
         </div>
       </div>
     </div>

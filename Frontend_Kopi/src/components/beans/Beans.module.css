@@ -1,37 +1,3 @@
-/* .beans {
-  display: flex;
-  flex-direction: row;
-}
-
-.beansCard {
-  border: 0.5px solid grey;
-  border-radius: 5px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: left;
-  width: 300px;
-  padding: 10px 5px;
-  margin: 10px;
-}
-
-.beansDetail {
-  border: 0.5px solid grey;
-  border-radius: 5px;
-  padding: 5px;
-  margin: 5px;
-} */
-
-/* .addingBeans {
-  border: 0.5px solid grey;
-  border-radius: 5px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 500px;
-} */
-
 .container {
   display: flex;
   flex-direction: column;
@@ -59,4 +25,19 @@
 .addBean {
   text-align: center;
   margin-top: 30px;
+}
+
+.addButton {
+  margin: 10px 10px;
+  width: 500px;
+  height: 35px;
+  border: 0.5px solid #a4b83f;
+  border-radius: 15px;
+  background-color: #a4b83f;
+  color: whitesmoke;
+  box-shadow: 1px 1px 1px 1px grey;
+}
+
+.addButton:hover {
+  opacity: 0.5;
 }

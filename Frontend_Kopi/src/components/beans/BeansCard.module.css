@@ -26,12 +26,23 @@
   font-weight: 600;
 }
 
-.addingBeans {
-  border: 0.5px solid grey;
-  border-radius: 5px;
+.buttonContainer {
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 500px;
+}
+
+.cardButton {
+  margin: 10px 10px;
+  width: 200px;
+  height: 35px;
+  border: 0.5px solid #a4b83f;
+  border-radius: 15px;
+  background-color: #a4b83f;
+  color: whitesmoke;
+  box-shadow: 1px 1px 1px 1px grey;
+}
+
+.cardButton:hover {
+  opacity: 0.5;
 }

@@ -217,7 +217,8 @@ const Profile = () => {
           ></input>
 
           <button
-            className="btn btn-success btn-block"
+            // className="btn btn-success btn-block"
+            className={styles.addButton}
             onClick={() => {
               addEquipment();
             }}

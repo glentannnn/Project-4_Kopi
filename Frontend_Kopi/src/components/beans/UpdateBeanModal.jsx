@@ -40,16 +40,12 @@ const Overlay = (props) => {
           // defaultValue={""}
           onChange={(e) => props.setType(e.target.value)}
         >
-          <option className="form-control my-3" value="" disabled>
+          <option value="" disabled>
             Type
           </option>
           {/* loop below, put this to later after functionality completed. Also attempt to reformat the words to nicer looking words from backend */}
-          <option className="form-control my-3" value="ESPRESSO">
-            Espresso
-          </option>
-          <option className="form-control my-3" value="FILTER">
-            Filter
-          </option>
+          <option value="ESPRESSO">Espresso</option>
+          <option value="FILTER">Filter</option>
         </select>
         <input
           type="text"
