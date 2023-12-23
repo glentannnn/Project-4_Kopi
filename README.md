@@ -21,6 +21,68 @@ On backend_kopi_postgres:
 - PGPASSWORD
 
 ### SQL Create Statements
+CREATE DATABASE kopi;
+
+#### Create "users" Table:
+CREATE TABLE roles (
+    role VARCHAR(200) PRIMARY KEY DEFAULT 'USER' 
+);
+
+INSERT INTO roles (role) VALUES ('ADMIN');
+INSERT INTO roles (role) VALUES ('USER');
+
+CREATE TABLE users (
+    user_id SERIAL PRIMARY KEY,
+    user_name VARCHAR(200) NOT NULL,
+    user_email VARCHAR(200) NOT NULL,
+    user_password VARCHAR(200) NOT NULL,
+    user_role VARCHAR(200) NOT NULL DEFAULT 'USER',
+    FOREIGN KEY (user_role) REFERENCES roles(role)
+);
+
+#### Create "beans" Table:
+CREATE TABLE beansType (
+    bean_type VARCHAR(200) PRIMARY KEY
+);
+
+INSERT INTO beansType (bean_type) VALUES ('ESPRESSO');
+INSERT INTO beansType (bean_type) VALUES ('FILTER');
+
+CREATE TABLE beans (
+    bean_id SERIAL PRIMARY KEY,
+    bean_country VARCHAR(100) NOT NULL,
+    bean_region VARCHAR(200) NOT NULL,
+    bean_type VARCHAR(200) NOT NULL,
+    FOREIGN KEY (bean_type) REFERENCES beansType(bean_type),
+    bean_taste VARCHAR(200) NOT NULL,
+    bean_roastdate DATE NOT NULL,
+    bean_prevgrindsize DECIMAL NOT NULL CHECK(bean_prevgrindsize >= 0 and bean_prevgrindsize <= 10),
+    bean_remarks VARCHAR(200) NOT NULL,
+    user_id INT NOT NULL
+);
+
+#### Create "equipment" Table:
+CREATE TABLE equipmentType (
+    equipment_type VARCHAR(200) PRIMARY KEY
+);
+
+INSERT INTO equipmentType (equipment_type) VALUES ('GRINDER');
+INSERT INTO equipmentType (equipment_type) VALUES ('ESPRESSOMACHINE');
+INSERT INTO equipmentType (equipment_type) VALUES ('V60');
+INSERT INTO equipmentType (equipment_type) VALUES ('TIMER');
+INSERT INTO equipmentType (equipment_type) VALUES ('TAMPER');
+INSERT INTO equipmentType (equipment_type) VALUES ('LEVELLER');
+INSERT INTO equipmentType (equipment_type) VALUES ('WDTTOOL');
+INSERT INTO equipmentType (equipment_type) VALUES ('FRENCHPRESS');
+
+CREATE TABLE equipment (
+    equipment_id SERIAL PRIMARY KEY,
+    equipment_type VARCHAR(200) NOT NULL,
+    FOREIGN KEY (equipment_type) REFERENCES equipmentType(equipment_type),
+    equipment_model VARCHAR(200) NOT NULL,
+    equipment_modification VARCHAR(200),
+    user_id INT NOT NULL
+);
 
 ## App Enhancement Roadmap
 Further development are planned for the App and are listed below: 
@@ -30,3 +92,4 @@ Further development are planned for the App and are listed below:
 
 
 ## Screenshots
+<img src="/Frontend_Kopi/public/screenshot-1.jpg" alt="Login" height="300">
