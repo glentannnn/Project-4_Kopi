@@ -113,6 +113,11 @@ CREATE TABLE equipmentType (
 INSERT INTO equipmentType (equipment_type) VALUES ('GRINDER');
 INSERT INTO equipmentType (equipment_type) VALUES ('ESPRESSOMACHINE');
 INSERT INTO equipmentType (equipment_type) VALUES ('V60');
+INSERT INTO equipmentType (equipment_type) VALUES ('TIMER');
+INSERT INTO equipmentType (equipment_type) VALUES ('TAMPER');
+INSERT INTO equipmentType (equipment_type) VALUES ('LEVELLER');
+INSERT INTO equipmentType (equipment_type) VALUES ('WDTTOOL');
+INSERT INTO equipmentType (equipment_type) VALUES ('FRENCHPRESS');
 
 -- Create "users equipment" table
 
