@@ -22,6 +22,9 @@ Other Technologies:
 ### Database Design
 <img src="/Frontend_Kopi/public/Database_Design.jpg" alt="Database Design" height="300">
 
+### Initial Design via Figma
+<a href="https://www.figma.com/file/NGWQXGicBRo8j0bwJX1dWy/Kopi-App?type=design&node-id=0%3A1&mode=design&t=fAdcpgVrIo1VbOvR-1">Figma</a>
+
 ## How to Use
 ### Env Variables Needed
 On Frontend_Kopi:
