@@ -4,6 +4,20 @@ This App is part of a deliverable for General Assembly's Software Engineering Im
 As a home barista, it is essential to track some parameters, such as grind sizes for beans, as it is dynamic and changes with time. With that in mind, I created this App, which serves as an electronic diary for baristas to track the beans they are currently using and have used before. 
 The App also allows users to input their equipment as users may have multiple different equipment they use. 
 
+## Technologies Used
+PERN Stack: 
+- PostgreSQL
+- Express
+- React
+- Node
+
+Other Technologies:
+- JavaScript
+- HTML
+- CSS
+- Bootstrap
+- Figma
+  
 ## Planning for the App
 ### Database Design
 <img src="/Frontend_Kopi/public/Database_Design.jpg" alt="Database Design" height="300">
@@ -99,4 +113,6 @@ Further development are planned for the App and are listed below:
 <img src="/Screenshots/screenshot-5.png" alt="Updating Equipment" height="300">
 <img src="/Screenshots/screenshot-6.png" alt="Beans Page" height="300">
 <img src="/Screenshots/screenshot-7.png" alt="Users Page" height="300">
+The below screenshot shows the page when a user with a "User" role enters the App. The Users page page is only shown if user has an "Admin" role. 
+<img src="/Screenshots/screenshot-8.png" alt="Users Page Only Available for Admins" height="300">
 
