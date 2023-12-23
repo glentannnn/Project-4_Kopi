@@ -6,11 +6,19 @@ The App also allows users to input their equipment as users may have multiple di
 
 ## Planning for the App
 ### Database Design
-<img src="/Screenshots/Database_Design.jpg" alt="Database Design">
+<img src="/Frontend_Kopi/public/Database_Design.jpg" alt="Database Design" height="300">
 
 ## How to Use
 ### Env Variables Needed
+On Frontend_Kopi:
+VITE_SERVER
 
+On backend_kopi_postgres:
+PORT
+ACCESS_SECRET
+REFRESH_SECRET
+PSUSER
+PGPASSWORD
 
 ### SQL Create Statements
 
