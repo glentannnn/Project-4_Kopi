@@ -4,6 +4,12 @@ This App is part of a deliverable for General Assembly's Software Engineering Im
 As a home barista, it is essential to track some parameters, such as grind sizes for beans, as it is dynamic and changes with time. With that in mind, I created this App, which serves as an electronic diary for baristas to track the beans they are currently using and have used before. 
 The App also allows users to input their equipment as users may have multiple different equipment they use. 
 
+## Requirements for Project
+- Full-stack App
+- At least 10 CRUD functions
+- Login and Registration
+- Admin and User roles
+  
 ## Technologies Used
 PERN Stack: 
 - PostgreSQL
