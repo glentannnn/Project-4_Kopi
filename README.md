@@ -92,4 +92,11 @@ Further development are planned for the App and are listed below:
 
 
 ## Screenshots
-<img src="/Frontend_Kopi/public/screenshot-1.jpg" alt="Login" height="300">
+<img src="/Screenshots/screenshot-1.png" alt="Login" height="300">
+<img src="/Screenshots/screenshot-2.png" alt="Registration" height="300">
+<img src="/Screenshots/screenshot-3.png" alt="Equipment Page" height="300">
+<img src="/Screenshots/screenshot-4.png" alt="Adding Equipment" height="300">
+<img src="/Screenshots/screenshot-5.png" alt="Updating Equipment" height="300">
+<img src="/Screenshots/screenshot-6.png" alt="Beans Page" height="300">
+<img src="/Screenshots/screenshot-7.png" alt="Users Page" height="300">
+
