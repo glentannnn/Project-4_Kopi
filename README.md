@@ -6,10 +6,11 @@ The App also allows users to input their equipment as users may have multiple di
 
 ## Planning for the App
 ### Database Design
-![Database_Design](Project-4/Screenshots/Database_Design.jpg)
+<img src="/Screenshots/Database_Design.jpg" alt="Database Design">
 
 ## How to Use
 ### Env Variables Needed
+
 
 ### SQL Create Statements
 
